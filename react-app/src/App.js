@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import BingMapsReact from "bingmaps-react";
+import { useState } from 'react';
 
 function App() {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BingMapsReact
+      onMapReady={() => {setIsMapLoaded(true)}}
+      bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
+      height="1000px"
+      mapOptions={{
+        navigationBarMode: "square",
+      }}
+      width="1000px"
+      viewOptions={{
+        center: { latitude: 42.360081, longitude: -71.058884 },
+        mapTypeId: "streetside",
+        streetsideOptions: { showExitButton: false, showCurrentAddress: false }
+      }}
+      
+    />
   );
 }
 
