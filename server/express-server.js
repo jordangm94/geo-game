@@ -5,7 +5,7 @@ const morgan = require('morgan'); //outputs request data
 /// Configuration / Set up
 /////////////////////////////////
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 /////////////////////////////////
 /// Middleware
