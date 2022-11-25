@@ -6,6 +6,7 @@ function App() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   return (
+    <div>
     <BingMapsReact
       onMapReady={() => {setIsMapLoaded(true)}}
       bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
@@ -19,8 +20,8 @@ function App() {
         mapTypeId: "streetside",
         streetsideOptions: { showExitButton: false, showCurrentAddress: false }
       }}
-      
     />
+    </div>
   );
 }
 
