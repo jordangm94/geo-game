@@ -29,8 +29,8 @@ VALUES (1, 48.858215, 2.295780),
 (3, 48.858215, 2.295780),
 (4, 48.858215, 2.295780);
 
-DELETE from turnes;
-INSERT INTO turnes
+DELETE from turns;
+INSERT INTO turns
 (user_id, game_id, question_id, turn_number)
 VALUES
 (1, 1, 1, 1),
