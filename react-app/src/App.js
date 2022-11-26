@@ -1,46 +1,21 @@
 import './App.css';
-import React, {useState, useRef} from 'react';
-import BingMapsReact from "bingmaps-react";
+import { Route, Routes } from "react-router-dom";
 
-import { MapContainer } from 'react-leaflet/MapContainer';
-import { TileLayer } from 'react-leaflet/TileLayer';
-import { useMap } from 'react-leaflet/hooks';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Leaderboard from "./pages/Leaderboard";
+import Game from './pages/Game';
 
 function App() {
-  const [isMapLoaded, setIsMapLoaded] = useState(false);
-
-  const mapRef = useRef()
-
-
-  
-
-
   return (
-    <>
-    <div ref={mapRef}>Hello World</div>
-    <MapContainer ref={mapRef} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </MapContainer>
-
-      
-    <BingMapsReact
-      onMapReady={() => {setIsMapLoaded(true)}}
-      bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
-      height="1000px"
-      mapOptions={{
-        navigationBarMode: "square",
-      }}
-      width="1000px"
-      viewOptions={{
-        center: { latitude: 42.360081, longitude: -71.058884 },
-        mapTypeId: "streetside",
-        streetsideOptions: { showExitButton: false, showCurrentAddress: false }
-      }}
-    />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/leaderboard" element={<Leaderboard />} />
+      <Route path="/game" element={<Game />} />
+    </Routes>
   );
 }
 
