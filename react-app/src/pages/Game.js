@@ -1,24 +1,13 @@
 import React, {useState, useRef} from 'react';
 import BingMapsReact from "bingmaps-react";
 
-import { MapContainer } from 'react-leaflet/MapContainer';
-import { TileLayer } from 'react-leaflet/TileLayer';
-import { useMap } from 'react-leaflet/hooks';
+import LeafletMap from '../components/LeafletMap';
 
 export default function Game() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
-  const mapRef = useRef()
   return (
     <>
-    <div ref={mapRef}>Hello World</div>
-    <MapContainer ref={mapRef} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </MapContainer>
-
-      
+    <LeafletMap />
     <BingMapsReact
       onMapReady={() => {setIsMapLoaded(true)}}
       bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
