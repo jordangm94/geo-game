@@ -6,6 +6,7 @@ import { TileLayer } from 'react-leaflet/TileLayer';
 import { useMap } from 'react-leaflet/hooks';
 
 export default function Game() {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   const mapRef = useRef()
   return (
     <>
