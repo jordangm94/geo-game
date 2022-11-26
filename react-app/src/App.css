@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+/* Leaflet Map CSS */
+
+.leaflet-container {
+  width: 50vw;
+  height: 50vh;
+}
+
