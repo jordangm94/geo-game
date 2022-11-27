@@ -1,8 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
-
-* {
-  font-family: 'Sora', sans-serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.App {
+  text-align: center;
 }
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Leaflet Answer Map CSS */
+
+.leaflet-container {
+  width: 100vh;
+  height: 100vh;
+  float: right;
+  position: relative;
+}
+
+/* Game Status Bar CSS */
+
+.game-status-component {
+  z-index: 100;
+  top: 1rem;
+  position: absolute;
+  height: 80px;
+  width: 250px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: whitesmoke;
+  background-image: linear-gradient(#000428, #004e92 );
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.inner-game-status {
+  font-family: 'Libre Baskerville', serif;
+  display: flex;
+  justify-content: space-around;
+}
+

@@ -3,7 +3,7 @@
 
 DELETE from users;
 INSERT INTO users
-(id, name, password_hash, email)
+(id, user_name, password_hash, email)
 VALUES (1, 'Alice', '$2a$10$18hdKagp.BaaveVf4OWtIeD.mqr/ptK7K66bno1BygX.5dY4Hq7YO', 'alice@gmail.com'),
 (2, 'Kira', '$2a$10$18hdKagp.BaaveVf4OWtIeD.mqr/ptK7K66bno1BygX.5dY4Hq7YO', 'kira@gmail.com'),
 (3, 'Mike', '$2a$10$18hdKagp.BaaveVf4OWtIeD.mqr/ptK7K66bno1BygX.5dY4Hq7YO', 'mike@gmail.com'),
@@ -15,10 +15,10 @@ DELETE from games;
 INSERT INTO games
 (id, user_id, start_time)
 VALUES 
-(1, 1, '2022-01-10'),
-(2, 1, '2022-01-10'),
-(3, 2, '2022-01-10'),
-(4, 3, '2022-01-10');
+(1, 1, NOW()),
+(2, 1, NOW()),
+(3, 2, NOW()),
+(4, 3, NOW());
 
 
 DELETE from questions;
