@@ -46,3 +46,23 @@
   position: relative;
 }
 
+/* Game Status Bar CSS */
+
+.game-status-component {
+  z-index: 100;
+  top: 1rem;
+  position: absolute;
+  height: 80px;
+  width: 250px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: whitesmoke;
+  background-color: #064700;
+  background-image: url("https://www.transparenttextures.com/patterns/black-thread.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.inner-game-status {
+  display: flex;
+  justify-content: space-around;
+}
