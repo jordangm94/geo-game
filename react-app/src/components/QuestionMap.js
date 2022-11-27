@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import BingMapsReact from "bingmaps-react";
 
-//This component houses the Bing map, which shows the player a random place on earth in which they will have to guess where they are.
-export default function BingMap () {
+//This component houses the Bing Map, which show the player a random place on earth in which they will have to guess where they are.
+export default function QuestionMap () {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   return (

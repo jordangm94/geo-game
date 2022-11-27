@@ -4,7 +4,7 @@ import { TileLayer } from 'react-leaflet/TileLayer';
 import { useMap } from 'react-leaflet/hooks';
 
 //This component houses the Leaflet map, which the player will use to naviagate the world and input/guess their location with the click of the mouse.
-export default function LeafletMap() {
+export default function AnswerMap() {
   const mapRef = useRef();
 
   return (

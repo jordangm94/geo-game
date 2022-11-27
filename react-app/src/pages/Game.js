@@ -1,11 +1,11 @@
-import LeafletMap from '../components/LeafletMap';
-import BingMap from '../components/BingMap';
+import AnswerMap from '../components/AnswerMap';
+import QuestionMap from '../components/QuestionMap';
 
 export default function Game() {
   return (
     <>
-    <LeafletMap />
-    <BingMap />
+    <AnswerMap />
+    <QuestionMap />
     </>
   );
 }
