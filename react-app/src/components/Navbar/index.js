@@ -5,7 +5,7 @@ export default function index() {
     <>
       <Nav>
         <NavLink to="/">
-          <h1>Logo</h1>
+          <img src={require("../../images/logo.svg")} alt="logo" />
         </NavLink>
         <Bars />
         <NavMenu>
@@ -18,11 +18,9 @@ export default function index() {
           <NavLink to="/help" activeStyle>
             Help
           </NavLink>
-          <NavLink to="/register" activeStyle>
-            Register
-          </NavLink>
         </NavMenu>
         <NavBtn>
+          <NavBtnLink to="/register">Register</NavBtnLink>
           <NavBtnLink to="/login">Log In</NavBtnLink>
         </NavBtn>
       </Nav>

@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   height: 80px;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - 1000px) / 2);
+  padding: 0.5rem calc((100vw - 1400px) / 2);
   z-index: 10;
 `;
 
@@ -64,6 +64,7 @@ export const NavBtnLink = styled(Link)`
   border-radius: 4px;
   background: #256ce1;
   padding: 10px 22px;
+  margin: 0 0.5em;
   color: #fff;
   boder: none;
   outline: none;
