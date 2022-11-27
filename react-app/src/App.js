@@ -10,13 +10,16 @@ import Game from './pages/Game';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/leaderboard" element={<Leaderboard />} />
-      <Route path="/game" element={<Game />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
+    </>
   );
 }
 
