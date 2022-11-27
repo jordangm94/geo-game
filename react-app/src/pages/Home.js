@@ -1,5 +1,7 @@
+import TitleDescription from "../components/Home/TitleDescription";
+
 export default function Home() {
   return (
-    <h1>This is home</h1>
+    <TitleDescription />
   );
 }

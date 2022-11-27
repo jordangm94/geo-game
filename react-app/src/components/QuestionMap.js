@@ -20,7 +20,7 @@ export default function QuestionMap (props) {
     viewOptions={{
       center: { latitude: 42.360081, longitude: -71.058884 },
       mapTypeId: "streetside",
-      streetsideOptions: { showExitButton: false, showCurrentAddress: false }
+      streetsideOptions: { showExitButton: false, showCurrentAddress: false  }
       // This line will be added to the above object - overviewMapMode: Microsoft.Maps.OverviewMapMode.hidden
     }}
   />
