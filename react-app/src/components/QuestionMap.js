@@ -6,7 +6,6 @@ export default function QuestionMap () {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   return (
-    <div class="BingMap" >
     <BingMapsReact
     onMapReady={() => {setIsMapLoaded(true)}}
     bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
@@ -21,6 +20,5 @@ export default function QuestionMap () {
       streetsideOptions: { showExitButton: false, showCurrentAddress: false }
     }}
   />
-  </div>
   )
 }
