@@ -62,6 +62,8 @@
 }
 
 .inner-game-status {
+  font-family: 'Libre Baskerville', serif;
   display: flex;
   justify-content: space-around;
 }
+
