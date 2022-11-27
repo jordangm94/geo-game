@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL,
+  user_name VARCHAR(255) NOT NULL,
   password_hash VARCHAR(255),
   email VARCHAR(255) NOT NULL
 );
@@ -27,5 +27,5 @@ CREATE TABLE turns (
   game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
   question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
   turn_number INTEGER NOT NULL,
-  score INTEGER
+  score REAL
 );
