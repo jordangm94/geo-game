@@ -1,29 +1,37 @@
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from "./NavbarElements";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-export default function index() {
+import "./Navbar.css";
+import { BsFillPinMapFill } from "react-icons/bs";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+export default function Navbar() {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(prev => !prev);
+
+  const closeMobileMenu = () => setClick(false);
+
   return (
     <>
-      <Nav>
-        <NavLink to="/">
-          <img src={require("../../images/logo.svg")} alt="logo" />
-        </NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to="/game" activeStyle>
-            Play
-          </NavLink>
-          <NavLink to="/leaderboard" activeStyle>
-            Leaderboard
-          </NavLink>
-          <NavLink to="/help" activeStyle>
-            Help
-          </NavLink>
-        </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/register">Register</NavBtnLink>
-          <NavBtnLink to="/login">Log In</NavBtnLink>
-        </NavBtn>
-      </Nav>
+      <nav className="navbar">
+        <div className="navbar-container container">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            <BsFillPinMapFill className="navbar-icon" />
+            GlobeHunch
+          </Link>
+          <div className="menu-icon" onClick={handleClick}>
+            {click ? <FaTimes /> : <FaBars />}
+          </div>
+          <ul className={click ? "nav-menu active" : "nav-menu"} >
+            <li className="nav-item">
+              <NavLink to="/" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}>
+                Home
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </>
   );
 };
