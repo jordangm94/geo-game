@@ -37,10 +37,12 @@
   }
 }
 
-/* Leaflet Map CSS */
+/* Leaflet Answer Map CSS */
 
 .leaflet-container {
-  width: 50vw;
-  height: 50vh;
+  width: 100vh;
+  height: 100vh;
+  float: right;
+  position: relative;
 }
 
