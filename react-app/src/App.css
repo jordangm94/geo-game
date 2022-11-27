@@ -57,8 +57,7 @@
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   color: whitesmoke;
-  background-color: #064700;
-  background-image: url("https://www.transparenttextures.com/patterns/black-thread.png");
+  background-image: linear-gradient(#000428, #004e92 );
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
