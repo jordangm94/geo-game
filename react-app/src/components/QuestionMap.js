@@ -5,10 +5,13 @@ import BingMapsReact from "bingmaps-react";
 export default function QuestionMap () {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
+  // let Microsoft = window.Microsoft;
+  // console.log("Hello from MICROSOFT", Microsoft);
+
   return (
     <BingMapsReact
     onMapReady={() => {setIsMapLoaded(true)}}
-    bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g"
+    bingMapsKey="AvbDxkEoBBjb3rv1rfFWxUKJSLPGi8yLYCP9VC02-dgCUeDnDFg4-LCP4y16Nz-g&callback=loadMapScenario"
     height="100vh"
     mapOptions={{
       navigationBarMode: "square",
@@ -18,6 +21,7 @@ export default function QuestionMap () {
       center: { latitude: 42.360081, longitude: -71.058884 },
       mapTypeId: "streetside",
       streetsideOptions: { showExitButton: false, showCurrentAddress: false }
+      // This line will be added to the above object - overviewMapMode: Microsoft.Maps.OverviewMapMode.hidden
     }}
   />
   )
