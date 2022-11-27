@@ -68,11 +68,17 @@
 }
 
 /* Home page CSS */
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .home-container {
+  position: absolute;
+  margin: 10em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .home-title {
@@ -86,7 +92,6 @@
 }
 
 .home-description {
-  margin: auto;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   text-align: center;
