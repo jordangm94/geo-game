@@ -67,3 +67,27 @@
   justify-content: space-around;
 }
 
+/* Home page CSS */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+}
+
+.home-game-title {
+  font-family: 'Ultra', serif;
+  font-size: 100px
+}
+
+.home-description {
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}

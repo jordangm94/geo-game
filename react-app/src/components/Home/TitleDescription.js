@@ -7,11 +7,11 @@ export default function TitleDescription() {
         <div className="home-title">
           Explore the world through
         </div>
-        <div className="home-game-title">
+        <h1 className="home-game-title">
           Globe Hunch
-        </div>
+        </h1>
         <div className="home-description">
-          Explore your surroundings, learn about new locations, all while earning points and climbing the leaderboard. Free to play!
+          Explore your surroundings, learn about new locations, <br/>all while earning points and climbing the leaderboard.<br/>Free to play!
         </div>
       </div>
     </>
