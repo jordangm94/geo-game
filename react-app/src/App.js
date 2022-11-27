@@ -8,12 +8,14 @@ import Leaderboard from "./pages/Leaderboard";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/leaderboard" element={<Leaderboard />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+      </Routes>
+    </>
   );
 }
 
