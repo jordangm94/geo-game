@@ -2,6 +2,8 @@ const { request, response } = require("express");
 
 const router = require("express").Router();
 
+const bcrypt = require("bcryptjs");
+
 module.exports = db => {
 
   // get user's games
