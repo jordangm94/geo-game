@@ -76,21 +76,24 @@ video {
 
 .home-container {
   width: 100vw;
-  height: 100vh;
   position: absolute;
   margin-top: 10em;
-  margin-bottom: 10em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
-.home-title {
+/* .home-title {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: black;
+  color: brown;
   font-size: 40px;
   margin-left: 5.5em;
-}
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+} */
 
 .home-game-title-container {
   width: 100vw;
@@ -100,15 +103,16 @@ video {
 
 .home-game-title {
   font-family: 'Ultra', serif;
-  font-size: 100px;
+  font-size: 6em;
   margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .home-description {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
   color: black;
-  margin-left: 3em;
+  margin-right: 3.5em;
+  margin-left: 0.5em;
   text-align: center;
-
 }

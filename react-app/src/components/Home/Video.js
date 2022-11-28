@@ -4,7 +4,7 @@ export default function Video () {
 
   return (
     <>
-    <video src={Home_Video_Pexels} autoPlay loop muted/>
+    <video src={Home_Video_Pexels} autoPlay loop muted />
     </>
   )
 }
