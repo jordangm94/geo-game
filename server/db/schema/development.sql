@@ -25,8 +25,8 @@ DELETE from questions;
 INSERT INTO questions
 (id,latitude, longitude)
 VALUES (1, 48.858215, 2.295780),
-(2, 48.858215, 2.295780),
-(3, 48.858215, 2.295780),
+(2, 51.502190, -0.139790),
+(3, 43.642384, -79.383911),
 (4, 48.858215, 2.295780);
 
 DELETE from turns;
