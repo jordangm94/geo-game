@@ -5,8 +5,8 @@ import BingMapsReact from "bingmaps-react";
 export default function QuestionMap (props) {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-  let Microsoft = window.Microsoft;
-  console.log("Hello from MICROSOFT", Microsoft);
+  // let Microsoft = window.Microsoft;
+  // console.log("Hello from MICROSOFT", Microsoft);
 
   return (
     <BingMapsReact
