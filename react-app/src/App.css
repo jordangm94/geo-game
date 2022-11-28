@@ -42,8 +42,11 @@
 .leaflet-container {
   width: 100vh;
   height: 100vh;
-  float: right;
-  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
 }
 
 /* Game Status Bar CSS */
