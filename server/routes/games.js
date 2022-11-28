@@ -4,6 +4,8 @@ const router = require("express").Router();
 
 const bcrypt = require("bcryptjs");
 
+import registerLoginHelpers from "../db/queries/loginRegisterHelpers";
+
 module.exports = db => {
 
   // get user's games
@@ -61,14 +63,31 @@ module.exports = db => {
   // --request POST \
   // --data '{ "user_name": "Kate", "password_hash": "09sduf01234ib3n3", "email": "kate@site.com" }' \
   // http://localhost:8001/api/register
-  router.post("/register", (request, response) => {
-    db.query(
-      `
-        INSERT INTO users (user_name, password_hash, email)
-        VALUES ($1, $2, $3) RETURNING *;`,
-      [request.body.user_name, request.body.password_hash, request.body.email]
-    ).then(({ rows }) => {
-      response.json(rows[0]);
+  router.post("/register", (req, res) => {
+    const { username, email, password } = req.body;
+    const userLoggedIn = req.session.user_id;
+    if (userLoggedIn) {
+      return res.redirect('/');
+    }
+    registerLoginHelpers.getUserByEmail(email).then(user => {
+      if (user) {
+        return res.send('An account with this email already exists±!');
+      }
+      registerLoginHelpers.getUserByUsername(username).then(user => {
+        if (user) {
+          return res.render('./errors/handlerTakenRegister', { userLoggedIn });
+        } else {
+          const hashedPassword = bcrypt.hashSync(password, 10);
+          registerLoginHelpers.registerUser(username, email, hashedPassword).then(user => {
+            console.log(user);
+            req.session.user_id = user.id;
+            res.redirect('/');
+          })
+            .catch(error => {
+              console.log(error.message);
+            });
+        }
+      });
     });
   });
 
