@@ -9,7 +9,7 @@ export default function TitleDescription() {
         </div> */}
         <div className="home-game-title-container">
         <h1 className="home-game-title">
-          Globe Hunch
+          GlobeHunch
         </h1>
         </div>
         <div className="home-description">
