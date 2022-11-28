@@ -5,10 +5,10 @@ import GameStatus from '../components/GameStatus';
 export default function Game() {
 
   return (
-    <>
-    <GameStatus />
-    <AnswerMap />
-    <QuestionMap />
-    </>
+    <main>
+      <GameStatus />
+      <QuestionMap />
+      <AnswerMap />
+    </main>
   );
-}
+};
