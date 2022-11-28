@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import { MapContainer } from 'react-leaflet/MapContainer';
 import { TileLayer } from 'react-leaflet/TileLayer';
 import { useMap } from 'react-leaflet/hooks';
+import "./AnswerMap.css"
 
 //This component houses the Leaflet map, which the player will use to naviagate the world and input/guess their location with the click of the mouse.
 export default function AnswerMap() {
