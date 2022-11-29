@@ -1,0 +1,8 @@
+.login-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.ant-input-affix-wrapper {
+  width: 20em;
+}
