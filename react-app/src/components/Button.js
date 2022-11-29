@@ -4,7 +4,7 @@ import "./Button.css"
 
 export default function Button() {
 
-  return (<button className="button"></button>);
+  return (<button className="button-home"> Play Now</button>);
 }
 
 // onClick={props.onClick}

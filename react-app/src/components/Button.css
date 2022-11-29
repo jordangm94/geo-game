@@ -1,16 +1,17 @@
-.button {
+.button-home {
+  position: absolute;
+  font-family: 'Ultra', serif;
   border-radius: 1rem;
   border: 0;
   font-size: 1.5rem;
-  height: 2rem;
-  line-height: 1.2rem;
-  margin-right: 1rem;
-  width: 8rem;
-  border-width: 2px;
+  height: 4rem;
+  width: 12rem;
   border-style: solid;
-  border-color: black;
-  color: black;
-  background-color: transparent;
+  border-color: #19191a;
+  color: white;
+  background-color: #19191a;
+  right: 19.5%;
+  bottom: 18.5%;
 }
 
 .button:hover {

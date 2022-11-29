@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
     <TitleDescription />
-    <Video />
     <Button />
+    <Video />
     </>
   );
 }
