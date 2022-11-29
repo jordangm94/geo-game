@@ -1,0 +1,22 @@
+.leaderList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.leader {
+  display: flex;
+  width: 480px;
+  flex-direction: row;
+  border: 1px solid;
+  padding: 16px;
+  gap: 10em;
+  justify-content: space-around;
+}
+
+.leader:nth-child(1) {
+  background-color: darkslategray;
+  color: azure;
+}
+
