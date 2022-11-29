@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Input } from "antd";
 
 import "./RegisterForm.css";
 
 
 export default function RegisterForm() {
+  const [usernameRegister, setUsernameRegister] = useState("");
+  const [emailRegister, setEmailRegister] = useState("");
+  const [passwordRegister, setPasswordRegister] = useState("");
+
   return (
     <Form
       layout="vertical"
@@ -36,7 +40,7 @@ export default function RegisterForm() {
         ]}
         hasFeedback
       >
-        <Input placeholder="Type your username" />
+        <Input placeholder="Type your username" onChange={e => setUsernameRegister(e.target.value)} />
       </Form.Item>
       <Form.Item
         name="email"
@@ -53,7 +57,7 @@ export default function RegisterForm() {
         ]}
         hasFeedback
       >
-        <Input placeholder="Type your email" />
+        <Input placeholder="Type your email" onChange={e => setEmailRegister(e.target.value)} />
       </Form.Item>
       <Form.Item
         name="password"
@@ -70,7 +74,7 @@ export default function RegisterForm() {
         ]}
         hasFeedback
       >
-        <Input.Password placeholder="Type your password" />
+        <Input.Password placeholder="Type your password" onChange={e => setPasswordRegister(e.target.value)} />
       </Form.Item>
       <Form.Item
         name="confirmPassword"
