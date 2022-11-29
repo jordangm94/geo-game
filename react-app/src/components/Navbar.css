@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
+  /* Changed from sticky to relative to address bug */
   position: relative;
   top: 0;
   z-index: 999;
