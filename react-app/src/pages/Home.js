@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
     <TitleDescription />
-    <Button className={"button-home"} title={"Play Now"}/>
+    <Button className={"button-home-playnow"} title={"Play Now"}/>
     <Video />
     </>
   );
