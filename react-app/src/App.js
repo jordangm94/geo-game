@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 
@@ -7,8 +9,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Leaderboard from "./pages/Leaderboard";
 import Game from './pages/Game';
+import React from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <>
       <Navbar />
