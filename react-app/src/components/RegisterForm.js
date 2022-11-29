@@ -7,9 +7,10 @@ import "./RegisterForm.css";
 export default function RegisterForm() {
   return (
     <Form
+      layout="vertical"
       autoComplete="off"
-      labelCol={{ span: 10 }}
-      wrapperCol={{ span: 14 }}
+      labelCol={{ span: 24 }}
+      wrapperCol={{ span: 24 }}
       onFinish={(values) => {
         console.log({ values });
       }}
