@@ -1,7 +1,5 @@
 .button-home-playnow {
-  /* z-index: 999;
-  pointer-events: none;
-  cursor: pointer; */
+  cursor: pointer;
   position: absolute;
   font-family: 'Ultra', serif;
   border-radius: 1rem;
@@ -14,7 +12,7 @@
   color: white;
   background-color: #19191a;
   right: 19.5%;
-  bottom: 18.5%;
+  bottom: 15%;
 }
 
 /* .button-home:hover {
