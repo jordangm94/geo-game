@@ -3,7 +3,7 @@
 .leaflet-container {
   width: 100vh;
   height: 100vh;
-  z-index: -1;
+  z-index: 1;
 }
 
 main {

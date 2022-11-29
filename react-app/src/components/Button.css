@@ -16,6 +16,7 @@
 }
 
 .button-game-answer {
+  z-index: 100;
   cursor: pointer;
   position: absolute;
   font-family: 'Ultra', serif;
