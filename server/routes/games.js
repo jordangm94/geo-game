@@ -112,19 +112,17 @@ module.exports = db => {
   router.post("/register", (req, res) => {
     const { username, email, password } = req.body;
 
-    // const userLoggedIn = req.session.user_id;
-
     getUserByEmail(email).then(user => {
       if (user) {
-        return res.send('An account with this email already exists!');
+        return res.json({ error: "Email exists", message: "An account with this email already exists!" });
       }
       getUserByUsername(username).then(user => {
         if (user) {
-          return res.send('This username has already been taken!');
+          return res.json({ error: "Username exists", message: "This username has already been taken!" });
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerUser(username, email, hashedPassword).then(user => {
-            console.log(user);
+            return res.json({ error: null, message: "Success" });
           })
             .catch(error => {
               console.log(error.message);
