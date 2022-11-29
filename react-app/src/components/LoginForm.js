@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Input } from "antd";
 
-import "./LoginForm.css";
-
-
 export default function RegisterForm() {
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
