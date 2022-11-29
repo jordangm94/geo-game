@@ -4,6 +4,8 @@ const router = require("express").Router();
 
 const bcrypt = require("bcryptjs");
 
+const cookieSession = require("cookie-session");
+
 module.exports = db => {
 
   // Register/Login Helper functions
@@ -122,6 +124,7 @@ module.exports = db => {
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerUser(username, email, hashedPassword).then(user => {
+            req.session.user_id = user.id;
             return res.json({ error: null, message: "Success", user });
           })
             .catch(error => {
@@ -140,7 +143,7 @@ module.exports = db => {
         return res.json({ error: "Failed login", message: "Incorrect email or password!" });
       } else {
         req.session.user_id = user.id;
-        return res.redirect('/');
+        return res.json({ error: null, message: "Success", user });
       }
     });
   });
