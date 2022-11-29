@@ -148,6 +148,14 @@ module.exports = db => {
     });
   });
 
+  router.get("/authenticate", (req, res) => {
+    if (req.session.user_id) {
+      res.json({ loggedIn: true, user: req.session.user_id });
+    } else {
+      res.json({ loggedIn: false });
+    }
+  });
+
   // ****************************************************
   // GET find user by email
   //
