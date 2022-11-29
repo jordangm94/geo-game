@@ -185,7 +185,8 @@ module.exports = db => {
       SUM(score) as total 
     FROM turns 
     GROUP BY user_id
-    HAVING SUM(score) > 0`,
+    HAVING SUM(score) > 0
+    ORDER BY SUM(score) desc`,
       []
     ).then(({ rows }) => {
       response.json(rows);

@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import "./Leaderboard.css";
+
+
 
 export default function Leaderboard() {
   const [state, setState] = useState([]);
@@ -13,13 +16,30 @@ export default function Leaderboard() {
     fetchData();
   }, []);
 
-  let scoreElements = state.map((line, index) =>
-    (<li key={index}>{line.user_name}: {line.total}</li>));
+  let scoreElements = state.map((line, index) => {
+
+    return (
+      <li className="leader" key={index}>
+        <div>{index + 1}</div>
+        <div>{line.user_name}</div>
+        <div>{line.total}</div>
+      </li>);
+
+  });
 
   return (
     <div>
-      <h1>This is the leaderboard page</h1>
-      <ul>{scoreElements}</ul>
+
+      <ul className="leaderList">
+        <li className="leader" >
+          <div>Rank</div>
+          <div>user name</div>
+          <div>Score</div>
+        </li>
+
+        {scoreElements}
+
+      </ul>
     </div>
   );
 }
