@@ -4,55 +4,55 @@ const router = require("express").Router();
 
 const bcrypt = require("bcryptjs");
 
-// Register/Login Helper functions
-const getUserByEmail = email => {
-  const queryString = `
+module.exports = db => {
+
+  // Register/Login Helper functions
+  function getUserByEmail(email) {
+    const queryString = `
   SELECT *
   FROM users
   WHERE email = $1
   `;
-  return db.query(queryString, [email])
-    .then(result => {
-      return result.rows[0];
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-};
+    return db.query(queryString, [email])
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
-const getUserByUsername = username => {
-  const queryString = `
+  function getUserByUsername(username) {
+    const queryString = `
   SELECT *
   FROM users
   WHERE user_name = $1
   `;
-  return db.query(queryString, [username])
-    .then(result => {
-      return result.rows[0];
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-};
+    return db.query(queryString, [username])
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
-const registerUser = (username, email, hashedPassword) => {
-  const queryString = `
+  function registerUser(username, email, hashedPassword) {
+    const queryString = `
   INSERT INTO users (user_name, password_hash, email)
   VALUES ($1, $2, $3)
   RETURNING *
   `;
-  const params = [username, email, hashedPassword];
+    const params = [username, hashedPassword, email];
 
-  return db.query(queryString, params)
-    .then(result => {
-      return result.rows[0];
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-};
-
-module.exports = db => {
+    return db.query(queryString, params)
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
   // get user's games
   // curl http://localhost:8001/api/games/3
@@ -111,20 +111,19 @@ module.exports = db => {
   // http://localhost:8001/api/register
   router.post("/register", (req, res) => {
     const { username, email, password } = req.body;
-    const userLoggedIn = req.session.user_id;
-    if (userLoggedIn) {
-      return res.redirect('/');
-    }
-    registerLoginHelpers.getUserByEmail(email).then(user => {
+
+    // const userLoggedIn = req.session.user_id;
+
+    getUserByEmail(email).then(user => {
       if (user) {
         return res.send('An account with this email already exists!');
       }
-      registerLoginHelpers.getUserByUsername(username).then(user => {
+      getUserByUsername(username).then(user => {
         if (user) {
           return res.send('This username has already been taken!');
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
-          registerLoginHelpers.registerUser(username, email, hashedPassword).then(user => {
+          registerUser(username, email, hashedPassword).then(user => {
             console.log(user);
           })
             .catch(error => {

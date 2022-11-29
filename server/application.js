@@ -28,7 +28,7 @@ function read(file) {
 
 module.exports = function application(
   ENV,
-  actions = { }
+  actions = {}
 ) {
   app.use(cors());
   app.use(helmet());
