@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Form, Button, Input } from "antd";
 
 import "./RegisterForm.css";
@@ -9,15 +10,21 @@ export default function RegisterForm() {
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
 
+  const register = () => {
+    axios.post('api/register', {
+      username: usernameRegister,
+      email: emailRegister,
+      password: passwordRegister
+    }).then(response => console.log(response));
+  };
+
   return (
     <Form
       layout="vertical"
       autoComplete="off"
       labelCol={{ span: 24 }}
       wrapperCol={{ span: 24 }}
-      onFinish={(values) => {
-        console.log({ values });
-      }}
+      onFinish={register}
       onFinishFailed={(error) => {
         console.log(error);
       }}
