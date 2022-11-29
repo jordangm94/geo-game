@@ -1,4 +1,7 @@
 .button-home-playnow {
+  /* z-index: 999;
+  pointer-events: none;
+  cursor: pointer; */
   position: absolute;
   font-family: 'Ultra', serif;
   border-radius: 1rem;

@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -9,6 +9,7 @@ import Leaderboard from "./pages/Leaderboard";
 import Game from './pages/Game';
 
 function App() {
+
   return (
     <>
       <Navbar />

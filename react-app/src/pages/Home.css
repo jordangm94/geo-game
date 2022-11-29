@@ -3,6 +3,8 @@ video {
   height: 100vh;
   width: 100vw;
   object-fit: cover;
+  position: fixed;
+  z-index: -1;
 }
 
 .home-container {
