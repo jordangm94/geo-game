@@ -71,17 +71,15 @@ module.exports = db => {
     }
     registerLoginHelpers.getUserByEmail(email).then(user => {
       if (user) {
-        return res.send('An account with this email already exists±!');
+        return res.send('An account with this email already exists!');
       }
       registerLoginHelpers.getUserByUsername(username).then(user => {
         if (user) {
-          return res.render('./errors/handlerTakenRegister', { userLoggedIn });
+          return res.send('This username has already been taken!')
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerLoginHelpers.registerUser(username, email, hashedPassword).then(user => {
             console.log(user);
-            req.session.user_id = user.id;
-            res.redirect('/');
           })
             .catch(error => {
               console.log(error.message);
