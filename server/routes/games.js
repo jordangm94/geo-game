@@ -122,13 +122,26 @@ module.exports = db => {
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerUser(username, email, hashedPassword).then(user => {
-            return res.json({ error: null, message: "Success" });
+            return res.json({ error: null, message: "Success", user });
           })
             .catch(error => {
               console.log(error.message);
             });
         }
       });
+    });
+  });
+
+  router.post("/login", (req, res) => {
+    const { email, password } = req.body;
+
+    getUserByEmail(email).then(user => {
+      if (!user || !bcrypt.compareSync(password, user.password_hash)) {
+        return res.json({ error: "Failed login", message: "Incorrect email or password!" });
+      } else {
+        req.session.user_id = user.id;
+        return res.redirect('/');
+      }
     });
   });
 
