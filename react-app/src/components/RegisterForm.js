@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Button, Input } from "antd";
 
+import "./RegisterForm.css";
+
 
 export default function RegisterForm() {
   return (
@@ -90,11 +92,13 @@ export default function RegisterForm() {
         hasFeedback>
         <Input.Password placeholder="Confirm your password" />
       </Form.Item>
-      <Form.Item wrapperCol={{ span: 24 }}>
-        <Button type="primary" htmlType="submit">
-          Register
-        </Button>
-      </Form.Item>
+      <div className="register-submit">
+        <Form.Item wrapperCol={{ span: 24 }}>
+          <Button type="primary" htmlType="submit">
+            Register
+          </Button>
+        </Form.Item>
+      </div>
     </Form >
   );
 }
