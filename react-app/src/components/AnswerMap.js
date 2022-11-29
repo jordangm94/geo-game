@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
+import React, { useRef } from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import "./AnswerMap.css";
 import LocationMarker from './LocationMarker';
 
@@ -7,8 +7,6 @@ import LocationMarker from './LocationMarker';
 //This component houses the Leaflet map, which the player will use to naviagate the world and input/guess their location with the click of the mouse.
 export default function AnswerMap() {
   const mapRef = useRef();
-
-  
 
   return (
     <MapContainer ref={mapRef} center={[51.505, -0.09]} zoom={3} scrollWheelZoom={false}>
