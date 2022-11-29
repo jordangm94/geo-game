@@ -4,7 +4,53 @@ const router = require("express").Router();
 
 const bcrypt = require("bcryptjs");
 
-import registerLoginHelpers from "../db/queries/loginRegisterHelpers";
+// Register/Login Helper functions
+const getUserByEmail = email => {
+  const queryString = `
+  SELECT *
+  FROM users
+  WHERE email = $1
+  `;
+  return db.query(queryString, [email])
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+};
+
+const getUserByUsername = username => {
+  const queryString = `
+  SELECT *
+  FROM users
+  WHERE user_name = $1
+  `;
+  return db.query(queryString, [username])
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+};
+
+const registerUser = (username, email, hashedPassword) => {
+  const queryString = `
+  INSERT INTO users (user_name, password_hash, email)
+  VALUES ($1, $2, $3)
+  RETURNING *
+  `;
+  const params = [username, email, hashedPassword];
+
+  return db.query(queryString, params)
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+};
 
 module.exports = db => {
 
@@ -75,7 +121,7 @@ module.exports = db => {
       }
       registerLoginHelpers.getUserByUsername(username).then(user => {
         if (user) {
-          return res.send('This username has already been taken!')
+          return res.send('This username has already been taken!');
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerLoginHelpers.registerUser(username, email, hashedPassword).then(user => {
