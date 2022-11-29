@@ -19,8 +19,8 @@ export default function QuestionMap(props) {
         navigationBarMode: "square",
       }}
       width="100vh"
-      viewOptions={{
-        center: { latitude: 42.360081, longitude: -71.058884 },
+      viewOptions={{  
+        center: { latitude: 51.501073,  longitude:  -0.123975  },
         mapTypeId: "streetside",
         // The pathway for overview map mode is defined as Microsoft.Maps.OverviewMapMode.hidden. Value at the end is 2. Simply used this number as key value to avoid conflicts and use of scripts for keys like "Microsoft" and "Maps"
         streetsideOptions: { showExitButton: false, showCurrentAddress: false, overviewMapMode: 2 }
