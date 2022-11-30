@@ -31,8 +31,8 @@ function App() {
       <Navbar loggedInUser={user} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} />
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} />
         <Route path="/leaderboard" element={user ? <Leaderboard /> : <Navigate to="/login" />} />
         <Route path="/game" element={user ? <Game /> : <Navigate to="/login" />} />
       </Routes>

@@ -6,7 +6,7 @@ import { Form, Button, Input } from "antd";
 import "./RegisterForm.css";
 
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
   const [usernameRegister, setUsernameRegister] = useState("");
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
@@ -27,6 +27,7 @@ export default function RegisterForm() {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
+        props.setUser(response.data.user.user_name);
       }
     });
   };

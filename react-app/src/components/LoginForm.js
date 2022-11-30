@@ -5,7 +5,7 @@ import { Form, Button, Input } from "antd";
 
 import "./LoginForm.css";
 
-export default function RegisterForm() {
+export default function LoginForm(props) {
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
 
@@ -14,7 +14,7 @@ export default function RegisterForm() {
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
-  
+
   const login = () => {
     axios.post('api/login', {
       email: emailLogin,
@@ -24,6 +24,7 @@ export default function RegisterForm() {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
+        props.setUser(response.data.user.user_name);
       }
     });
   };

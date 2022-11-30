@@ -6,7 +6,7 @@ import { BsFillPinMapFill } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(prev => !prev);
@@ -46,16 +46,27 @@ export default function Navbar() {
                   Help
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/register" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
-                  Log In
-                </NavLink>
-              </li>
+              {!props.loggedInUser && (
+                <li className="nav-item">
+                  <NavLink to="/register" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
+                    Register
+                  </NavLink>
+                </li>
+              )}
+              {!props.loggedInUser && (
+                <li className="nav-item">
+                  <NavLink to="/login" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
+                    Log In
+                  </NavLink>
+                </li>
+              )}
+              {props.loggedInUser && (
+                <li className="nav-item">
+                  <NavLink to="/login" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
+                    Log Out
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
