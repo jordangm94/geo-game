@@ -18,7 +18,7 @@ export default function QuestionMap(props) {
         navigationBarMode: "square",
       }}
       width="100vh"
-      //Add key to component so that when lat and long change with turn state, so does key. Map component with old key will be removed entirley from DOM and map component with new key is freshly mounted.
+      //Add key to component so that when lat and long change with turn state, so does key. Map component with old key will be removed entirley from DOM and map component with new key (using new lat long) is freshly mounted. This allows maps to change correctly!
       key={`${props.turn.latitude}-${props.turn.longitude}`}//Apply key in order to remount new map component each time latitude and longitude change.
       viewOptions={{  
         center: { latitude: props.turn.latitude,  longitude:  props.turn.longitude },
