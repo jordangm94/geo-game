@@ -122,7 +122,7 @@ module.exports = db => {
         } else {
           const hashedPassword = bcrypt.hashSync(password, 10);
           registerUser(username, email, hashedPassword).then(user => {
-            req.session.user_id = user.id;
+            req.session.user_name = user.user_name;
             return res.json({ error: null, message: "Success", user });
           })
             .catch(error => {
@@ -140,15 +140,15 @@ module.exports = db => {
       if (!user || !bcrypt.compareSync(password, user.password_hash)) {
         return res.json({ error: "Failed login", message: "Incorrect email or password!" });
       } else {
-        req.session.user_id = user.id;
+        req.session.user_name = user.user_name;
         return res.json({ error: null, message: "Success", user });
       }
     });
   });
 
   router.get("/authenticate", (req, res) => {
-    if (req.session.user_id) {
-      res.json({ loggedIn: true, user: req.session.user_id });
+    if (req.session.user_name) {
+      res.json({ loggedIn: true, username: req.session.user_name });
     } else {
       res.json({ loggedIn: false });
     }
