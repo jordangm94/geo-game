@@ -4,8 +4,6 @@ const router = require("express").Router();
 
 const bcrypt = require("bcryptjs");
 
-const cookieSession = require("cookie-session");
-
 module.exports = db => {
 
   // Register/Login Helper functions
