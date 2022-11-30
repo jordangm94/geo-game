@@ -156,6 +156,15 @@ module.exports = db => {
     }
   });
 
+  router.post("/logout", (req, res) => {
+    if (req.session.userEmail) {
+      req.session = null;
+      res.json({ error: null, message: "Successfully logged out" });
+    } else {
+      res.json({ error: "Failed logout", message: "You are not logged in" });
+    }
+  });
+
   // ****************************************************
   // GET find user by email
   //
