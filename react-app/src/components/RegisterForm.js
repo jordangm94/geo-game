@@ -15,6 +15,8 @@ export default function RegisterForm() {
 
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true;
+
   const register = () => {
     axios.post('api/register', {
       username: usernameRegister,

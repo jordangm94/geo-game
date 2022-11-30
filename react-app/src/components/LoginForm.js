@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Input } from "antd";
 
-import "./LoginForm.css"
+import "./LoginForm.css";
 
 export default function RegisterForm() {
   const [emailLogin, setEmailLogin] = useState("");
@@ -13,6 +13,8 @@ export default function RegisterForm() {
 
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true;
+  
   const login = () => {
     axios.post('api/login', {
       email: emailLogin,
