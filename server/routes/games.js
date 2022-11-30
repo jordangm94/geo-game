@@ -2,7 +2,57 @@ const { request, response } = require("express");
 
 const router = require("express").Router();
 
+const bcrypt = require("bcryptjs");
+
 module.exports = db => {
+
+  // Register/Login Helper functions
+  function getUserByEmail(email) {
+    const queryString = `
+  SELECT *
+  FROM users
+  WHERE email = $1
+  `;
+    return db.query(queryString, [email])
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+  function getUserByUsername(username) {
+    const queryString = `
+  SELECT *
+  FROM users
+  WHERE user_name = $1
+  `;
+    return db.query(queryString, [username])
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+  function registerUser(username, email, hashedPassword) {
+    const queryString = `
+  INSERT INTO users (user_name, password_hash, email)
+  VALUES ($1, $2, $3)
+  RETURNING *
+  `;
+    const params = [username, hashedPassword, email];
+
+    return db.query(queryString, params)
+      .then(result => {
+        return result.rows[0];
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
   // get user's games
   // curl http://localhost:8001/api/games/3
@@ -96,15 +146,60 @@ module.exports = db => {
   // --request POST \
   // --data '{ "user_name": "Kate", "password_hash": "09sduf01234ib3n3", "email": "kate@site.com" }' \
   // http://localhost:8001/api/register
-  router.post("/register", (request, response) => {
-    db.query(
-      `
-        INSERT INTO users (user_name, password_hash, email)
-        VALUES ($1, $2, $3) RETURNING *;`,
-      [request.body.user_name, request.body.password_hash, request.body.email]
-    ).then(({ rows }) => {
-      response.json(rows[0]);
+  router.post("/register", (req, res) => {
+    const { username, email, password } = req.body;
+
+    getUserByEmail(email).then(user => {
+      if (user) {
+        return res.json({ error: "Email exists", message: "An account with this email already exists!" });
+      }
+      getUserByUsername(username).then(user => {
+        if (user) {
+          return res.json({ error: "Username exists", message: "This username has already been taken!" });
+        } else {
+          const hashedPassword = bcrypt.hashSync(password, 10);
+          registerUser(username, email, hashedPassword).then(user => {
+            req.session.userEmail = user.email;
+            return res.json({ error: null, message: "Success", user });
+          })
+            .catch(error => {
+              console.log(error.message);
+            });
+        }
+      });
     });
+  });
+
+  router.post("/login", (req, res) => {
+    const { email, password } = req.body;
+
+    getUserByEmail(email).then(user => {
+      if (!user || !bcrypt.compareSync(password, user.password_hash)) {
+        return res.json({ error: "Failed login", message: "Incorrect email or password!" });
+      } else {
+        req.session.userEmail = user.email;
+        return res.json({ error: null, message: "Success", user });
+      }
+    });
+  });
+
+  router.post("/authenticate", (req, res) => {
+    if (req.session.userEmail) {
+      getUserByEmail(req.session.userEmail).then(user => {
+        return res.json({ error: null, message: "Success", user });
+      });
+    } else {
+      return res.json({ error: "Failed authentication", message: "You do not have a cookie session!" });
+    }
+  });
+
+  router.post("/logout", (req, res) => {
+    if (req.session.userEmail) {
+      req.session = null;
+      res.json({ error: null, message: "Successfully logged out" });
+    } else {
+      res.json({ error: "Failed logout", message: "You are not logged in" });
+    }
   });
 
   // ****************************************************

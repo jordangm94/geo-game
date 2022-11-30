@@ -11,7 +11,7 @@ const PORT = 3001;
 /// Middleware
 /////////////////////////////////
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 /////////////////////////////////
@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 /////////////////////////////////
 
 app.listen(PORT, () => {
-  console.log('Our Express app is listening on PORT: ', PORT)
+  console.log('Our Express app is listening on PORT: ', PORT);
 });
 
 /////////////////////////////////

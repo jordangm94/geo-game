@@ -1,5 +1,12 @@
-export default function Login() {
+import LoginForm from "../components/LoginForm";
+
+import "./Login.css";
+
+export default function Login(props) {
   return (
-    <h1>This is the login page</h1>
-  )
+    <div className="login-form">
+      <h1>Log In</h1>
+      <LoginForm setUser={props.setUser} />
+    </div>
+  );
 }

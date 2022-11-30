@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Leaderboard.css";
 
+import Leaderboard_Video_Pexels from './leaderboard.mp4'
 
 
 export default function Leaderboard() {
@@ -33,13 +34,14 @@ export default function Leaderboard() {
       <ul className="leaderList">
         <li className="leader" >
           <div>Rank</div>
-          <div>user name</div>
+          <div>User</div>
           <div>Score</div>
         </li>
 
         {scoreElements}
 
       </ul>
+      <video className="leaderboardBackground" src={Leaderboard_Video_Pexels} autoPlay loop muted  />
     </div>
   );
 }
