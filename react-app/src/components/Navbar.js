@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Navbar.css";
@@ -14,11 +14,14 @@ export default function Navbar(props) {
 
   const closeMobileMenu = () => setClick(false);
 
+  const navigate = useNavigate();
+
   const logout = () => {
     axios.post("/api/logout", {}).then(response => {
       if (!response.data.error) {
         props.setUser("");
         closeMobileMenu();
+        navigate("/");
       }
     });
   };
