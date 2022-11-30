@@ -3,14 +3,11 @@ import BingMapsReact from "bingmaps-react";
 
 //This component houses the Bing Map, which show the player a random place on earth in which they will have to guess where they are.
 export default function QuestionMap(props) {
-  
   const API_KEY = process.env.REACT_APP_API_KEY
   //Can remove this line at end of project, simply for testing
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   // let Microsoft = window.Microsoft;
-
-  console.log(props.turn)
 
   return (
     <BingMapsReact
@@ -21,6 +18,7 @@ export default function QuestionMap(props) {
         navigationBarMode: "square",
       }}
       width="100vh"
+      key={`${props.turn.latitude}-${props.turn.longitude}`}//Apply key in order to remount new map component each time latitude and longitude change
       viewOptions={{  
         center: { latitude: props.turn.latitude,  longitude:  props.turn.longitude },
         mapTypeId: "streetside",
