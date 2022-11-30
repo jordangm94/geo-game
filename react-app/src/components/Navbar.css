@@ -14,7 +14,8 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
-  position: sticky;
+  /* Changed from sticky to relative to address bug */
+  position: relative;
   top: 0;
   z-index: 999;
 }
@@ -36,6 +37,7 @@
 
 .navbar-logo {
   color: #fff;
+  font-family: 'Ultra', serif;
   justify-self: start;
   cursor: pointer;
   text-decoration: none;

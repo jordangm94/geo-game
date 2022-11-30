@@ -36,34 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* Leaflet Answer Map CSS */
-
-.leaflet-container {
-  width: 100vh;
-  height: 100vh;
-  float: right;
-  position: relative;
-}
-
-/* Game Status Bar CSS */
-
-.game-status-component {
-  z-index: 100;
-  top: 1rem;
-  position: absolute;
-  height: 80px;
-  width: 250px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  color: whitesmoke;
-  background-image: linear-gradient(#000428, #004e92 );
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
-.inner-game-status {
-  font-family: 'Libre Baskerville', serif;
-  display: flex;
-  justify-content: space-around;
-}
-

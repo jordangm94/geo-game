@@ -1,0 +1,40 @@
+.button-home-playnow {
+  cursor: pointer;
+  position: absolute;
+  font-family: 'Ultra', serif;
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 12rem;
+  border-style: solid;
+  border-color: #19191a;
+  color: white;
+  background-color: #19191a;
+  right: 19.5%;
+  bottom: 15%;
+}
+
+.button-game-answer {
+  z-index: 100;
+  cursor: pointer;
+  position: absolute;
+  font-family: 'Ultra', serif;
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 10rem;
+  border-style: solid;
+  border-color: #19191a;
+  color: white;
+  background-color: #19191a;
+  right: 2%;
+  top: 7rem;
+}
+
+/* .button-home:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid transparent;
+} */

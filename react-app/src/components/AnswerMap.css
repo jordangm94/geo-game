@@ -1,0 +1,12 @@
+/* Leaflet Answer Map CSS */
+
+.leaflet-container {
+  width: 100vh;
+  height: 100vh;
+  z-index: 1;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}

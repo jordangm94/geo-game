@@ -1,0 +1,52 @@
+/* Home page CSS */
+video {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+}
+
+.home-container {
+  width: 100vw;
+  position: absolute;
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* .home-title {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: brown;
+  font-size: 40px;
+  margin-left: 5.5em;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+} */
+
+.home-game-title-container {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-game-title {
+  font-family: 'Ultra', serif;
+  font-size: 6em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  color: #19191a;
+}
+
+.home-description {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  color: black;
+  margin-right: 3.5em;
+  margin-left: 0.5em;
+  text-align: center;
+}
