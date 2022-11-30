@@ -18,17 +18,17 @@ function App() {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get("/api/authenticate").then(response => {
-      if (response.data.loggedIn) {
-        setUser(response.data.username);
-        console.log(response.data.username);
+    axios.post("/api/authenticate", {}).then(response => {
+      if (!response.data.error) {
+        console.log("hello");
+        setUser(response.data.user.user_name);
       }
     });
   }, []);
 
   return (
     <>
-      <Navbar loggedInUser={user} />
+      <Navbar loggedInUser={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
 
 import "./Navbar.css";
 import { BsFillPinMapFill } from "react-icons/bs";
@@ -12,6 +13,15 @@ export default function Navbar(props) {
   const handleClick = () => setClick(prev => !prev);
 
   const closeMobileMenu = () => setClick(false);
+
+  const logout = () => {
+    axios.post("/api/logout", {}).then(response => {
+      if (!response.data.error) {
+        props.setUser("");
+        closeMobileMenu();
+      }
+    });
+  };
 
   return (
     <>
@@ -63,8 +73,15 @@ export default function Navbar(props) {
               {props.loggedInUser && (
                 <li className="nav-item">
                   <NavLink to="/login" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
-                    Log Out
+                    Signed in as {props.loggedInUser}
                   </NavLink>
+                </li>
+              )}
+              {props.loggedInUser && (
+                <li className="nav-item">
+                  <div className="nav-links logout" onClick={logout}>
+                    Log Out
+                  </div>
                 </li>
               )}
             </ul>
