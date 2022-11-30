@@ -14,14 +14,15 @@ import React from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userID, setUserID] = useState(null);
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios.post("/api/authenticate", {}).then(response => {
       if (!response.data.error) {
-        console.log("hello");
         setUser(response.data.user.user_name);
+        setUserID(response.data.user.id);
       }
     });
   }, []);
