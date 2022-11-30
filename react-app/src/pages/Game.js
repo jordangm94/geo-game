@@ -19,34 +19,35 @@ export default function Game() {
       //Store new game information from DB in a variable
       let gameData = await response.json();
       setGame(gameData); //This will set state of game to value of gameData object from DB
-      setTurn(gameData.turns[0]) //This will set the turn to the first first turn in the game
+      setTurn(gameData.turns[0]); //This will set the turn to the first first turn in the game
+      // console.log(gameData.turns)
     }
-    
+
     fetchData();
   }, []);
-  console.log(game)
-  console.log("Hello from turn:", turn)
-  
+  // console.log(game)
+  // console.log("Hello from turn:", turn)
+
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
-  const nextTurn = function() {  
+  const nextTurn = function() {
     if (turn === game.turns[0]) {
-        setTurn(game.turns[1])
-      } 
-      if (turn === game.turns[1]) {
-        setTurn(game.turns[2])
-      } if (turn === game.turns[2]) {
-        console.log("Congratulations on completing the game")
-      }
-    };
-    
-    return (
+      setTurn(game.turns[1]);
+    }
+    if (turn === game.turns[1]) {
+      setTurn(game.turns[2]);
+    } if (turn === game.turns[2]) {
+      // console.log("Congratulations on completing the game")
+    }
+  };
+
+  return (
     <main>
       {game && (
         <>
           <GameStatus />,
-          <QuestionMap />,
+          <QuestionMap turn={turn} />,
           <AnswerMap />,
-          <Button  onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
+          <Button onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
         </>
       )}
     </main>

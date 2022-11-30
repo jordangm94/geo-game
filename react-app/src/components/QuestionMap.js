@@ -10,6 +10,8 @@ export default function QuestionMap(props) {
 
   // let Microsoft = window.Microsoft;
 
+  console.log(props.turn)
+
   return (
     <BingMapsReact
       onMapReady={() => { setIsMapLoaded(true); }}
@@ -20,7 +22,7 @@ export default function QuestionMap(props) {
       }}
       width="100vh"
       viewOptions={{  
-        center: { latitude: 51.501073,  longitude:  -0.123975  },
+        center: { latitude: props.turn.latitude,  longitude:  props.turn.longitude },
         mapTypeId: "streetside",
         // The pathway for overview map mode is defined as Microsoft.Maps.OverviewMapMode.hidden. Value at the end is 2. Simply used this number as key value to avoid conflicts and use of scripts for keys like "Microsoft" and "Maps"
         streetsideOptions: { showExitButton: false, showCurrentAddress: false, overviewMapMode: 2 }
