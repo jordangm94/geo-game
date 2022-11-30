@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import './App.css';
-<<<<<<< HEAD
 import { Route, Routes, Navigate } from "react-router-dom";
-=======
-import { Route, Routes, useNavigate } from "react-router-dom";
->>>>>>> master
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
