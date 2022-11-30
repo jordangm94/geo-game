@@ -6,7 +6,7 @@ import Button from '../components/Button';
 
 export default function Game() {
   const [game, setGame] = useState(null);
-  console.log(game)
+  const [turn, setTurn] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,38 +17,29 @@ export default function Game() {
       });
       //Store new game information from DB in a variable
       let gameData = await response.json();
-      //Set state of game to the response object
-      setGame(gameData)
+      setGame(gameData); //This will set state of game to value of gameData object from DB
+      setTurn(gameData.turns[0]) //This will set the turn to the first first turn in the game
     }
-    
+
     fetchData();
   }, []);
-  console.log(game)
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     let response = await fetch("http://localhost:8001/api/games/101", {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' }
-  //     });
-  //     let newData = await response.json();
-  //     console.log(newData)
-  //     // setState(newData);
-  //   }
-
-  //   console.log(fetchData())
-  //   fetchData();
-  // }, []);
-
+  
+  //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
+  const nextTurn = function() {
+    console.log(game)
+    // setTurn(game.turns)
+    console.log(turn)
+  };
 
   return (
     <main>
       {game && (
         <>
-      <GameStatus />, 
-      <QuestionMap />,
-      <AnswerMap />,
-      <Button className={"button-game-answer"} title={"Answer"} />
-      </>
+          <GameStatus />,
+          <QuestionMap />,
+          <AnswerMap />,
+          <Button gameData={game} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
+        </>
       )}
     </main>
   );
