@@ -23,7 +23,7 @@ export default function Leaderboard(props) {
       <li className="leader" key={index}>
         <div>{index + 1}</div>
         <div>{line.user_name}</div>
-        <div>{line.total}</div>
+        <div>{line.total_for_game}</div>
       </li>);
   });
 
@@ -39,14 +39,14 @@ export default function Leaderboard(props) {
         <li className="leader header" >
           <div>Rank</div>
           <div>User</div>
-          <div>Score</div>
+          <div>Best Score</div>
         </li>
 
         {/* if current user exists it will be shown on line 1 */}
         {currentUser && (<li className="leader me">
           <div><span>{currentUserIndex + 1}</span></div>
           <div><span className="crown">👑</span>{currentUser.user_name}<span className="crown">👑</span></div>
-          <div>{currentUser.total}</div>
+          <div>{currentUser.total_for_game}</div>
         </li>)}
 
         {scoreElements}
