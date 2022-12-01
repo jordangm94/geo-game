@@ -15,8 +15,7 @@ export default function Game(props) {
       let response = await fetch(`http://localhost:8001/api/games/${props.userID}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({user_id: props.userID})
-        //Will need to add a Body: JSON stringify here for information we are sending which, will be userID
+        body: JSON.stringify({user_id: props.userID}) //Here we pass the userID of individual logged in so it can be used in creation of game object.
       });
       //Store new game information from DB in a variable
       let gameData = await response.json();
