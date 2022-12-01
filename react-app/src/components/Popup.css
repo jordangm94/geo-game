@@ -1,0 +1,33 @@
+.popupContainer {
+ 
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: rgb(221, 235, 236);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 48pt;
+  text-align: center;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.popupBackground {
+  height: 100%;
+  width: 100%;
+}
+
+.hiddenMessage {
+  opacity: 0;
+}
+
+.visibleMessage {
+  opacity: 0.7;
+}
