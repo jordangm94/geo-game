@@ -27,7 +27,7 @@ export default function Leaderboard(props) {
 
   });
 
-  let currentUserIndex = state.findIndex((x) => x.user_id === props.userId);
+  let currentUserIndex = state.findIndex((x) => x.user_id === props.userID);
   let currentUser = state[currentUserIndex];
 
 
