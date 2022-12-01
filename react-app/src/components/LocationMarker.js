@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Marker, Popup, useMapEvents } from 'react-leaflet';
+import { Marker, useMapEvents } from 'react-leaflet';
 
 //This component will set a marker on the map wherever the user clicks
 export default function LocationMarker() {
