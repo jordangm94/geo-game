@@ -4,17 +4,18 @@ import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 
-export default function Game() {
+export default function Game(props) {
   const [game, setGame] = useState(null);
   const [turn, setTurn] = useState(null);
+
 
   useEffect(() => {
     async function fetchData() {
       //Use post request to create new game in DB, returns response object with information.
-      let response = await fetch("http://localhost:8001/api/games/101", {
+      let response = await fetch(`http://localhost:8001/api/games/${props.userID}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-        //Will need to add a Body: JSON stringify here for information we are sending which, will be userID
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({user_id: props.userID}) //Here we pass the userID of individual logged in so it can be used in creation of game object.
       });
       //Store new game information from DB in a variable
       let gameData = await response.json();
@@ -25,7 +26,7 @@ export default function Game() {
 
     fetchData();
   }, []);
-  // console.log(game)
+  console.log(game)
   // console.log("Hello from turn:", turn)
 
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked

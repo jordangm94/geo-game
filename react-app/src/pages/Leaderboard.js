@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import "./Leaderboard.css";
 
-import Leaderboard_Video_Pexels from './leaderboard.mp4'
+import Leaderboard_Video_Pexels from './leaderboard.mp4';
 
-
-export default function Leaderboard() {
+export default function Leaderboard(props) {
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -28,20 +27,32 @@ export default function Leaderboard() {
 
   });
 
+  let currentUserIndex = state.findIndex((x) => x.user_id === props.userID);
+  let currentUser = state[currentUserIndex];
+
+
   return (
     <div>
 
       <ul className="leaderList">
-        <li className="leader" >
+
+        <li className="leader header" >
           <div>Rank</div>
           <div>User</div>
           <div>Score</div>
         </li>
 
+        {currentUser && (<li className="leader me">
+          <div><span>{currentUserIndex + 1}</span></div>
+          <div><span className="crown">👑</span>{currentUser.user_name}<span className="crown">👑</span></div>
+          <div>{currentUser.total}</div>
+        </li>)}
+
         {scoreElements}
 
       </ul>
-      <video className="leaderboardBackground" src={Leaderboard_Video_Pexels} autoPlay loop muted  />
+
+      <video className="leaderboardBackground" src={Leaderboard_Video_Pexels} autoPlay loop muted />
     </div>
   );
 }
