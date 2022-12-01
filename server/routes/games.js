@@ -96,7 +96,8 @@ module.exports = db => {
       response.json(rows);
     });
   });
-
+  
+  // ****************************************************
   // POST create new game
   // curl --request POST http://localhost:8001/api/games/3
   router.post("/games/:user_id", async (request, response) => {
@@ -148,33 +149,6 @@ module.exports = db => {
   });
 
   // ****************************************************
-  // // GET all turns by game_id
-  // router.get("/turns/:game_id", (request, response) => {
-  //   db.query(
-  //     `
-  //     SELECT
-  //       * FROM turns WHERE game_id = $1`,
-  //     [request.params.game_id]
-  //   ).then(({ rows: games }) => {
-  //     response.json(games);
-  //   });
-  // });
-
-
-
-  // ****************************************************
-  // HTTP POST /api/register create new user
-  // Body:
-  // {
-  //    user_name: "Kate",
-  //    password_hash: "09sduf01234ib3n3",
-  //    email: "kate@site.com"
-  // }
-  // 
-  // To test:
-  // curl --header "Content-Type: application/json" \
-  // --request POST \
-  // --data '{ "user_name": "Kate", "password_hash": "09sduf01234ib3n3", "email": "kate@site.com" }' \
   // http://localhost:8001/api/register
   router.post("/register", (req, res) => {
     const { username, email, password } = req.body;
@@ -282,7 +256,7 @@ module.exports = db => {
   });
 
   // GET score for user
-  // curl http://localhost:8001/api/users/score/3
+  // curl http://localhost:8001/api/users/score/103
   router.get("/users/:user_id/scores", (request, response) => {
     db.query(
       `
@@ -299,7 +273,7 @@ module.exports = db => {
   });
 
 
-  // GET  http://localhost:8001/api/scores - global scores by user
+  // GET  global scores by user for leaderboard
   // curl http://localhost:8001/api/users/scores
   router.get("/users/scores", (request, response) => {
     db.query(
