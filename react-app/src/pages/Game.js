@@ -10,7 +10,7 @@ export default function Game(props) {
   const [turn, setTurn] = useState(null);
   const [popupMessage, setPopupMessage] = useState(null);
   const [popupMessageClass, setPopupMessageClass] = useState(null);
-  const [position, setPosition] = useState(null) //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
+  const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
 
   useEffect(() => {
     async function fetchData() {
@@ -63,7 +63,7 @@ export default function Game(props) {
         <>
           <GameStatus />
           <QuestionMap turn={turn} />
-          <AnswerMap position={position} setPosition={setPosition}/>
+          <AnswerMap position={position} setPosition={setPosition} />
           <Button onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
         </>
       )}
