@@ -4,6 +4,7 @@ import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
+import NullPositionPopup from '../components/NullPositionPopup';
 
 export default function Game(props) {
   const [game, setGame] = useState(null);
@@ -45,11 +46,9 @@ export default function Game(props) {
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
 
-    if (position === null) {
-      console.log("You have not selected a location")
-    } else {
+
       showResult("Your score is 123");
-  
+
       if (turn === game.turns[0]) {
         setTurn(game.turns[1]);
       }
@@ -60,7 +59,7 @@ export default function Game(props) {
       }
 
 
-    }
+    
 
   };
 
@@ -68,6 +67,7 @@ export default function Game(props) {
     <main>
       {game && (
         <>
+        <NullPositionPopup />
           <GameStatus />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
@@ -75,6 +75,7 @@ export default function Game(props) {
         </>
       )}
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
+      
     </main>
   );
 };
