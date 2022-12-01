@@ -30,8 +30,20 @@
   background-color: rgba(216, 192, 162, 0.507);
 }
 
-.leader:nth-child(1) {
+.leader.header {
   border: 1px solid rgba(236, 209, 176, 0.507);
   color: rgb(230, 226, 223);
   background-color: rgba(37, 22, 2, 0.507);
+}
+
+.leader.me > div:first-child {
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+.crown{
+  font-size: xx-large;
+  margin: 8px;
 }
