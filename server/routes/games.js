@@ -69,7 +69,19 @@ module.exports = db => {
     const c = 2 * Math.asin(Math.sqrt(a));
 
 
-    return c * earthRadiusKm;
+    return Math.round(c * earthRadiusKm);
+  }
+
+  function calculateTurnScore(distanceKm) {
+    const multiplier = 0.5;
+    let maxRoundScore = 5000;
+
+    maxRoundScore - (distanceKm * multiplier);
+
+    if (maxRoundScore < 0) {
+      return 0;
+    }
+    return maxRoundScore;
   }
 
   // get user's games
