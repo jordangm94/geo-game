@@ -17,9 +17,6 @@ export default function LocationMarker() {
   //If position has been set by user, return marker component which will mark the map
   return position === null ? null : (
     <Marker position={position}>
-      <Popup>
-        Good try! You were x km's away. You have earned x score!
-        </Popup>
     </Marker>
   )
 }

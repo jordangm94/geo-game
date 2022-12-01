@@ -29,7 +29,7 @@ export default function Game(props) {
 
     fetchData();
   }, []);
-  console.log(game);
+  // console.log(game);
   // console.log("Hello from turn:", turn)
 
   // showing congrats popup with score
