@@ -45,16 +45,23 @@ export default function Game(props) {
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
 
-    showResult("Your score is 123");
+    if (position === null) {
+      console.log("You have not selected a location")
+    } else {
+      showResult("Your score is 123");
+  
+      if (turn === game.turns[0]) {
+        setTurn(game.turns[1]);
+      }
+      if (turn === game.turns[1]) {
+        setTurn(game.turns[2]);
+      } if (turn === game.turns[2]) {
+        // console.log("Congratulations on completing the game")
+      }
 
-    if (turn === game.turns[0]) {
-      setTurn(game.turns[1]);
+
     }
-    if (turn === game.turns[1]) {
-      setTurn(game.turns[2]);
-    } if (turn === game.turns[2]) {
-      // console.log("Congratulations on completing the game")
-    }
+
   };
 
   return (
@@ -64,7 +71,7 @@ export default function Game(props) {
           <GameStatus />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
-          <Button onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
+          <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
         </>
       )}
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
