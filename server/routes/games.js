@@ -54,6 +54,24 @@ module.exports = db => {
       });
   };
 
+  // Helper functions to calculate distance and score
+  function calculateDistanceKm(questionLat, questionLon, answerLat, answerLon) {
+    const earthRadiusKm = 6371;
+    const radiansQuestionLat = questionLat * Math.PI / 180;
+    const radiansQuestionLon = questionLon * Math.PI / 180;
+    const radiansAnswerLat = answerLat * Math.PI / 180;
+    const radiansAnswerLon = answerLon * Math.PI / 180;
+
+    const dLon = radiansAnswerLon - radiansQuestionLon;
+    const dLat = radiansAnswerLat - radiansQuestionLat;
+    const a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(lat1) * Math.cos(lat2) + Math.pow(Math.sin(dLon / 2), 2);
+
+    const c = 2 * Math.asin(Math.sqrt(a));
+
+
+    return c * earthRadiusKm;
+  }
+
   // get user's games
   // curl http://localhost:8001/api/games/3
   router.get("/games/:user_id", (request, response) => {
