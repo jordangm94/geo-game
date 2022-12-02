@@ -81,6 +81,8 @@ module.exports = db => {
     if (maxRoundScore < 0) {
       return 0;
     }
+
+
     return maxRoundScore;
   }
 
@@ -96,7 +98,7 @@ module.exports = db => {
       response.json(rows);
     });
   });
-  
+
   // ****************************************************
   // POST create new game
   // curl --request POST http://localhost:8001/api/games/3
@@ -281,16 +283,44 @@ module.exports = db => {
     SELECT 
       user_id,
       (SELECT user_name FROM users WHERE users.id = user_id), 
-      SUM(score) as total 
+      SUM(score) as total_for_game 
     FROM turns 
-    GROUP BY user_id
+    GROUP BY game_id, user_id
     HAVING SUM(score) > 0
-    ORDER BY SUM(score) desc`,
+    ORDER BY user_id, SUM(score) desc`,
       []
     ).then(({ rows }) => {
+      for (let i = rows.length - 1; i > 0; i--) {
+        if (rows[i - 1].user_id === rows[i].user_id) {
+          rows.splice(i, 1);
+        }
+      }
+      rows.sort((a, b) => {
+        return b.total_for_game - a.total_for_game;
+      });
       response.json(rows);
     });
   });
 
+  //GROUP BY user_id
   return router;
 };
+
+router.put("/calculate/:turn_id", (req, res) => {
+  const { questionLat, questionLon, answerLat, answerLon } = req.body;
+
+  const distanceKm = calculateDistanceKm(questionLat, questionLon, answerLat, answerLon);
+
+  const score = calculateTurnScore(distanceKm);
+
+  db.query(
+    `
+      UPDATE turns
+      SET score = $1
+      WHERE turn_id = $2
+      RETURNING score
+    `, [score, req.params.turn_id]
+  ).then(result => {
+    return res.json({ score: result.rows[0], distanceKm });
+  });
+});
