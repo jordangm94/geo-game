@@ -1,6 +1,6 @@
-import "./NullPositionPopUp.css";
+import "./NullPositionError.css";
 
-export default function NullPositionPopUp(props) {
+export default function NullPositionError() {
 
   return (
     <div className="null-position-popup-container">

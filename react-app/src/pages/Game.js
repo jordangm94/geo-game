@@ -5,7 +5,8 @@ import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
-import NullPositionPopUp from '../components/NullPositionPopUp';
+import NullPositionPopUp from '../components/NullPositionError';
+import NullPositionError from '../components/NullPositionError';
 
 export default function Game(props) {
   const [game, setGame] = useState(null);
@@ -100,7 +101,7 @@ export default function Game(props) {
         </>
       )}
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
-      {errorState && (<NullPositionPopUp />)}
+      {errorState && (<NullPositionError />)}
 
     </main>
   );
