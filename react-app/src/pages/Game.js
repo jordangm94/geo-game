@@ -37,7 +37,7 @@ export default function Game(props) {
     fetchData();
   }, []);
   // console.log(game);
-  // console.log("Hello from turn:", turn)
+  console.log("Hello from turn:", turn)
 
   // showing congrats popup with score
   function showResult(messageKm, messageKmScore) {
@@ -93,7 +93,7 @@ export default function Game(props) {
     <main>
       {game && (
         <>
-          <GameStatus />
+          <GameStatus turnNumber={turn.turn_number}/>
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
           <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
