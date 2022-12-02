@@ -6,6 +6,8 @@ import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
 import NullPositionError from '../components/NullPositionError';
+import GameSummary from '../components/GameSummary';
+
 
 export default function Game(props) {
   const [game, setGame] = useState(null);
@@ -18,6 +20,7 @@ export default function Game(props) {
   //CSS of error Message to be applied with change in state
   // const [nullPositionCSS, setNullPositionCSS] = useState(null);
   // const [nullPositionCSSTitle, setNullPositionCSSTitle] = useState(null);
+  const [summary, setSummary] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +54,14 @@ export default function Game(props) {
       }, 2500);
     }, 1000);
 
-    setTimeout(() => { setPopupMessage(null); }, 8000); // remove popup from the screen
+    setTimeout(() => {
+      setPopupMessage(null);
+      // check the last round to show the gameSummary component
+      if (turn === game.turns[2]) {
+        setSummary(game);
+      }
+
+    }, 8000); // remove popup from the screen
   }
 
   function showError() {
@@ -91,7 +101,7 @@ export default function Game(props) {
 
   return (
     <main>
-      {game && (
+      {(game && !summary) && (
         <>
           <GameStatus />
           <QuestionMap turn={turn} />
@@ -102,6 +112,7 @@ export default function Game(props) {
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
       {errorState && (<NullPositionError />)}
 
+      {summary && (<GameSummary />)}
     </main>
   );
 };
