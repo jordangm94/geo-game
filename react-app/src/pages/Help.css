@@ -4,3 +4,27 @@
   background-image: url('Help.jpg');
   background-size: cover;
 }
+
+.help-title-description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+
+}
+.help-title {
+  font-family: 'Ultra', serif;
+  font-size: 6.0em;
+  color: whitesmoke;
+  margin-bottom: 0.2em;
+}
+
+.help-description {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.5em;
+  font-weight:bold;
+  color: whitesmoke;
+  text-align: center;
+}
