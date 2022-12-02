@@ -5,7 +5,6 @@ import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
-import NullPositionPopUp from '../components/NullPositionError';
 import NullPositionError from '../components/NullPositionError';
 
 export default function Game(props) {
