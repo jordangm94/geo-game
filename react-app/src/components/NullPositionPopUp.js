@@ -1,6 +1,6 @@
-import "./NullPositionPopup.css";
+import "./NullPositionPopUp.css";
 
-export default function NullPositionPopup(props) {
+export default function NullPositionPopUp(props) {
 
   return (
     <div className="null-position-popup-container">

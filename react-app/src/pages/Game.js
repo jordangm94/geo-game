@@ -5,7 +5,7 @@ import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
-import NullPositionPopup from '../components/NullPositionPopup';
+import NullPositionPopUp from '../components/NullPositionPopUp';
 
 export default function Game(props) {
   const [game, setGame] = useState(null);
@@ -61,17 +61,17 @@ export default function Game(props) {
   const nextTurn = function() {
     if (position === null) {
       showError();
-    } 
+    }
     else {
-      axios.put(`api/calculate/${turn.id}`, {questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
+      axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
         .then(response => {
-          console.log('Hello from response', response)
+          console.log('Hello from response', response);
           showResult(`Your score is ${response.data.score}.`);
-    
+
           setTimeout(() => {
             setPosition(null);
           }, 4300);
-    
+
           if (turn === game.turns[0]) {
             setTurn(game.turns[1]);
           }
@@ -80,7 +80,7 @@ export default function Game(props) {
           } if (turn === game.turns[2]) {
             // console.log("Congratulations on completing the game")
           }
-        })
+        });
     }
   };
 
@@ -95,7 +95,7 @@ export default function Game(props) {
         </>
       )}
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
-      {errorState && (<NullPositionPopup />)}
+      {errorState && (<NullPositionPopUp />)}
 
     </main>
   );
