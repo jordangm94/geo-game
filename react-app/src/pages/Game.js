@@ -66,7 +66,7 @@ export default function Game(props) {
       axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
         .then(response => {
           console.log('Hello from response', response);
-          showResult(`Your score is ${response.data.score}.`);
+          showResult(`You are ${response.data.distanceKm}km away. Your score is ${response.data.score}.`);
 
           setTimeout(() => {
             setPosition(null);

@@ -56,20 +56,31 @@ module.exports = db => {
 
   // Helper functions to calculate distance and score
   function calculateDistanceKm(questionLat, questionLon, answerLat, answerLon) {
-    const earthRadiusKm = 6371;
-    const radiansQuestionLat = questionLat * Math.PI / 180;
-    const radiansQuestionLon = questionLon * Math.PI / 180;
-    const radiansAnswerLat = answerLat * Math.PI / 180;
-    const radiansAnswerLon = answerLon * Math.PI / 180;
-    
-    const dLon = radiansAnswerLon - radiansQuestionLon;
-    const dLat = radiansAnswerLat - radiansQuestionLat;
-    const a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(radiansQuestionLat) * Math.cos(radiansAnswerLat) + Math.pow(Math.sin(dLon / 2), 2);
-    
-    const c = 2 * Math.asin(Math.sqrt(a));
-    
-    console.log('Hello from radiansQuestionLat', radiansQuestionLat, 'Hello from radians questionLON', radiansQuestionLon, 'Hello from radians AnswerLat', radiansAnswerLat, 'Hello from radians AnswerLong', radiansAnswerLon, 'hello from DLON', dLon, 'hello from DLAT', dLat, 'Hello from a', a, 'Hello from c', c )
-    return Math.round(c * earthRadiusKm);
+
+    var R = 6371.0710; 
+    var rlat1 = questionLat * (Math.PI/180); // Convert degrees to radians
+    var rlat2 = answerLat * (Math.PI/180); // Convert degrees to radians
+    var difflat = rlat2-rlat1; // Radian difference (latitudes)
+    var difflon = (answerLon-questionLon) * (Math.PI/180); // Radian difference (longitudes)
+
+    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+    return Math.round(d);
+  
+
+    // const earthRadiusKm = 6371;
+    // const radiansQuestionLat = questionLat * Math.PI / 180;
+    // const radiansQuestionLon = questionLon * Math.PI / 180;
+    // const radiansAnswerLat = answerLat * Math.PI / 180;
+    // const radiansAnswerLon = answerLon * Math.PI / 180;
+
+    // const dLon = radiansAnswerLon - radiansQuestionLon;
+    // const dLat = radiansAnswerLat - radiansQuestionLat;
+    // const a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(radiansQuestionLat) * Math.cos(radiansAnswerLat) + Math.pow(Math.sin(dLon / 2), 2);
+    // const c = 2 * Math.asin(Math.sqrt(a));
+
+    // console.log('Hello from radiansQuestionLat', radiansQuestionLat, 'Hello from radians questionLON', radiansQuestionLon, 'Hello from radians AnswerLat', radiansAnswerLat, 'Hello from radians AnswerLong', radiansAnswerLon, 'hello from DLON', dLon, 'hello from DLAT', dLat, 'Hello from a', a, 'Hello from c', c);
+
+    //return Math.round(c * earthRadiusKm);
   }
 
   function calculateTurnScore(distanceKm) {
