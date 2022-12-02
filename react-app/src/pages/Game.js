@@ -12,6 +12,11 @@ export default function Game(props) {
   const [popupMessage, setPopupMessage] = useState(null);
   const [popupMessageClass, setPopupMessageClass] = useState(null);
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
+  const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
+
+  //CSS of error Message to be applied with change in state
+  // const [nullPositionCSS, setNullPositionCSS] = useState(null);
+  // const [nullPositionCSSTitle, setNullPositionCSSTitle] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -43,10 +48,18 @@ export default function Game(props) {
     setTimeout(() => { setPopupMessage(null); }, 10000); // remove popup from the screen
   }
 
+  function showError() {
+    setErrorState("Error");
+    setTimeout(() => {
+      setErrorState(null);
+    }, 3100);
+  }
+
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
-
-
+    if (position === null) {
+      showError();
+    } else {
       showResult("Your score is 123");
 
       if (turn === game.turns[0]) {
@@ -57,17 +70,13 @@ export default function Game(props) {
       } if (turn === game.turns[2]) {
         // console.log("Congratulations on completing the game")
       }
-
-
-    
-
+    }
   };
 
   return (
     <main>
       {game && (
         <>
-        <NullPositionPopup />
           <GameStatus />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
@@ -75,7 +84,8 @@ export default function Game(props) {
         </>
       )}
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
-      
+      {errorState && (<NullPositionPopup />)}
+
     </main>
   );
 };

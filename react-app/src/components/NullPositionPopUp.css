@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 612.63px;
   height: 195.5px;
-  background-color: black;
+  background-color: #19191a;
   border-radius: 20px;
   padding: 1em;
   position: fixed;
@@ -21,7 +21,7 @@
 
 .null-position-popup-title {
   font-family: 'Ultra', serif;
-  font-weight: 700;
+  font-weight: 600;
   color: white;
   padding-bottom: 0.2em;
 }
