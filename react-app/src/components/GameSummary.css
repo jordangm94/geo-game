@@ -1,0 +1,44 @@
+
+.summary-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-map {
+  height: 50vh;
+  width: 50%;
+}
+.summary-results{
+background-color: aquamarine;
+
+}
+
+
+.summary-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 80vh;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.button-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 12rem;
+  color: white;
+  background-color: #19191a;
+  font-family: 'Ultra', serif;
+  border-radius: 1rem;
+  border: 0;
+  border-style: solid;
+  border-color: #19191a;
+  right: 19.5%;
+  bottom: 15%;
+}
+
