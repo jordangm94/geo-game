@@ -302,25 +302,25 @@ module.exports = db => {
     });
   });
 
+  router.post("/calculate/:turn_id", (req, res) => {
+    const { questionLat, questionLon, answerLat, answerLon } = req.body;
+
+    const distanceKm = calculateDistanceKm(questionLat, questionLon, answerLat, answerLon);
+
+    const score = calculateTurnScore(distanceKm);
+
+    db.query(
+      `
+        UPDATE turns
+        SET score = $1
+        WHERE turn_id = $2
+        RETURNING score
+      `, [score, req.params.turn_id]
+    ).then(result => {
+      return res.json({ score: result.rows[0], distanceKm });
+    });
+  });
+
   //GROUP BY user_id
   return router;
 };
-
-router.put("/calculate/:turn_id", (req, res) => {
-  const { questionLat, questionLon, answerLat, answerLon } = req.body;
-
-  const distanceKm = calculateDistanceKm(questionLat, questionLon, answerLat, answerLon);
-
-  const score = calculateTurnScore(distanceKm);
-
-  db.query(
-    `
-      UPDATE turns
-      SET score = $1
-      WHERE turn_id = $2
-      RETURNING score
-    `, [score, req.params.turn_id]
-  ).then(result => {
-    return res.json({ score: result.rows[0], distanceKm });
-  });
-});
