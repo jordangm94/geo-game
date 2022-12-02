@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Leaderboard from "./pages/Leaderboard";
 import Game from './pages/Game';
 import React from 'react';
+import GameSummary from "./components/GameSummary";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,6 +37,8 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} />
         <Route path="/leaderboard" element={user ? <Leaderboard userID={userID} /> : <Navigate to="/login" />} />
         <Route path="/game" element={user ? <Game userID={userID}/> : <Navigate to="/login" />} />
+
+        <Route path="/summary" element={<GameSummary />} />
       </Routes>
     </>
   );
