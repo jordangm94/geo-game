@@ -40,13 +40,18 @@ export default function Game(props) {
   // console.log("Hello from turn:", turn)
 
   // showing congrats popup with score
-  function showResult(message) {
+  function showResult(messageKm, messageKmScore) {
     setPopupMessageClass("hiddenMessage"); // adding class attribute to make message invisible while on the screen 
-    setPopupMessage(message);
+    setPopupMessage(messageKm);
     setTimeout(() => {
       setPopupMessageClass("visibleMessage"); // adding class attribute to make it visible 
-    }, 4300);
-    setTimeout(() => { setPopupMessage(null); }, 10000); // remove popup from the screen
+      setPopupMessage(messageKm);
+      setTimeout(() => {
+        setPopupMessage(messageKmScore);
+      }, 2500);
+    }, 1000);
+
+    setTimeout(() => { setPopupMessage(null); }, 8000); // remove popup from the screen
   }
 
   function showError() {
@@ -66,7 +71,7 @@ export default function Game(props) {
       axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
         .then(response => {
           console.log('Hello from response', response);
-          showResult(`You are ${response.data.distanceKm}km away. Your score is ${response.data.score}.`);
+          showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
 
           setTimeout(() => {
             setPosition(null);
