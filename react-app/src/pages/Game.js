@@ -62,6 +62,10 @@ export default function Game(props) {
     } else {
       showResult("Your score is 123");
 
+      setTimeout(() => {
+        setPosition(null);
+      }, 4300);
+
       if (turn === game.turns[0]) {
         setTurn(game.turns[1]);
       }
