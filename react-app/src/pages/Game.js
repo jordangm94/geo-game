@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import AnswerMap from '../components/AnswerMap';
 import QuestionMap from '../components/QuestionMap';
 import GameStatus from '../components/GameStatus';
@@ -55,25 +56,31 @@ export default function Game(props) {
     }, 3100);
   }
 
+  // console.log(position)
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
     if (position === null) {
       showError();
-    } else {
-      showResult("Your score is 123");
-
-      setTimeout(() => {
-        setPosition(null);
-      }, 4300);
-
-      if (turn === game.turns[0]) {
-        setTurn(game.turns[1]);
-      }
-      if (turn === game.turns[1]) {
-        setTurn(game.turns[2]);
-      } if (turn === game.turns[2]) {
-        // console.log("Congratulations on completing the game")
-      }
+    } 
+    else {
+      axios.put(`api/calculate/${turn.id}`, {questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
+        .then(response => {
+          console.log('Hello from response', response)
+          showResult(`Your score is ${response.data.score}.`);
+    
+          setTimeout(() => {
+            setPosition(null);
+          }, 4300);
+    
+          if (turn === game.turns[0]) {
+            setTurn(game.turns[1]);
+          }
+          if (turn === game.turns[1]) {
+            setTurn(game.turns[2]);
+          } if (turn === game.turns[2]) {
+            // console.log("Congratulations on completing the game")
+          }
+        })
     }
   };
 

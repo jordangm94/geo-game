@@ -61,14 +61,14 @@ module.exports = db => {
     const radiansQuestionLon = questionLon * Math.PI / 180;
     const radiansAnswerLat = answerLat * Math.PI / 180;
     const radiansAnswerLon = answerLon * Math.PI / 180;
-
+    
     const dLon = radiansAnswerLon - radiansQuestionLon;
     const dLat = radiansAnswerLat - radiansQuestionLat;
-    const a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(lat1) * Math.cos(lat2) + Math.pow(Math.sin(dLon / 2), 2);
-
+    const a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(radiansQuestionLat) * Math.cos(radiansAnswerLat) + Math.pow(Math.sin(dLon / 2), 2);
+    
     const c = 2 * Math.asin(Math.sqrt(a));
-
-
+    
+    console.log('Hello from radiansQuestionLat', radiansQuestionLat, 'Hello from radians questionLON', radiansQuestionLon, 'Hello from radians AnswerLat', radiansAnswerLat, 'Hello from radians AnswerLong', radiansAnswerLon, 'hello from DLON', dLon, 'hello from DLAT', dLat, 'Hello from a', a, 'Hello from c', c )
     return Math.round(c * earthRadiusKm);
   }
 
@@ -302,10 +302,12 @@ module.exports = db => {
     });
   });
 
-  router.post("/calculate/:turn_id", (req, res) => {
+  router.put("/calculate/:turn_id", (req, res) => {
     const { questionLat, questionLon, answerLat, answerLon } = req.body;
+    console.log('Hello from req.body', req.body)
 
     const distanceKm = calculateDistanceKm(questionLat, questionLon, answerLat, answerLon);
+    console.log(distanceKm);
 
     const score = calculateTurnScore(distanceKm);
 
@@ -313,7 +315,7 @@ module.exports = db => {
       `
         UPDATE turns
         SET score = $1
-        WHERE turn_id = $2
+        WHERE id = $2
         RETURNING score
       `, [score, req.params.turn_id]
     ).then(result => {
