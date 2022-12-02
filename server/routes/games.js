@@ -328,7 +328,7 @@ module.exports = db => {
         RETURNING score
       `, [score, req.params.turn_id]
     ).then(result => {
-      return res.json({ score: result.rows[0], distanceKm });
+      return res.json({ score, distanceKm });
     });
   });
 
