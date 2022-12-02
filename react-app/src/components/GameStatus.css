@@ -14,7 +14,9 @@
 }
 
 .inner-game-status {
+  margin-top: 1em;
   font-family: 'Ultra', serif;
+  font-size: large;
   display: flex;
   justify-content: space-around;
 }
