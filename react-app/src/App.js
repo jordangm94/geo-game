@@ -39,7 +39,6 @@ function App() {
         <Route path="/leaderboard" element={user ? <Leaderboard userID={userID} /> : <Navigate to="/login" />} />
         <Route path="/game" element={user ? <Game userID={userID}/> : <Navigate to="/login" />} />
         <Route path="/help" element={<Help />} />
-        <Route path="/summary" element={<GameSummary />} />
       </Routes>
     </>
   );
