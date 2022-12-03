@@ -58,6 +58,8 @@ export default function Game(props) {
       setPopupMessage(null);
       // check the last round to show the gameSummary component
       if (turn === game.turns[2]) {
+        console.log("Hello from game:", game);
+
         setSummary(game);
       }
 
@@ -82,6 +84,10 @@ export default function Game(props) {
         .then(response => {
           console.log('Hello from response', response);
           showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
+          
+          //remember turn result in the state to use in the gameSummary
+          turn.score = response.data.score;
+          turn.distanceKm = response.data.distanceKm;
 
           setTimeout(() => {
             setPosition(null);
@@ -112,7 +118,7 @@ export default function Game(props) {
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
       {errorState && (<NullPositionError />)}
 
-      {summary && (<GameSummary />)}
+      {summary && (<GameSummary game={game} />)}
     </main>
   );
 };
