@@ -1,5 +1,5 @@
 .summary-container {
-  background-color: rgb(20, 24, 44);
+  background-color: rgb(43, 51, 94);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   font-weight: bold;
   font-style: italic;
   font-size: 40pt;
-  color: aliceblue;
+  color:rgb(185, 179, 179);
   text-align: center;
   margin: 80px;
   padding-bottom: 40px;
@@ -37,7 +37,7 @@
 } */
 .summary-results {
   /* background-color: rgb(5, 14, 11); */
-  color: white;
+  color:rgb(185, 179, 179);
   margin-left: 80px;
   margin-right: 80px;
 
@@ -65,7 +65,7 @@
 
 .summary-results ul li div:nth-child(1) {
   /* background-color: beige; */
-  border-bottom: 2px solid #19191a;
+  border-bottom: 2px solid #1a1a36;
   padding-bottom: 10px;
   font-family: Tahoma;
   font-weight: normal;
@@ -99,8 +99,8 @@
   font-size: 1.5rem;
   height: 4rem;
   width: 12rem;
-  color: white;
-  background-color: #19191a;
+  color: rgb(185, 179, 179);
+  background-color: #1a1a36;
   font-family: 'Ultra', serif;
   border-radius: 1rem;
   border: 0;

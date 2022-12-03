@@ -26,8 +26,8 @@ export default function GameSummary(props) {
     return (
       <li>
         <div>Round {turn.turn_number}</div>
-        <div><span className="shine">{turn.score} </span>points</div>
-        <div><span className="shine">{turn.distanceKm}</span>km</div>
+        <div><span className="shine">{turn.score} </span>&nbsp; points</div>
+        <div><span className="shine">{turn.distanceKm}</span>&nbsp; km</div>
       </li>
     );
 
