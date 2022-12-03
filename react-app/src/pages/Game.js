@@ -40,7 +40,8 @@ export default function Game(props) {
     fetchData();
   }, []);
   // console.log(game);
-  console.log("Hello from turn:", turn)
+  // console.log("Hello from turn:", turn)
+  // console.log("Hello from turn score:", turn.score)
 
   // showing congrats popup with score
   function showResult(messageKm, messageKmScore) {
@@ -73,7 +74,15 @@ export default function Game(props) {
     }, 3100);
   }
 
-  // console.log(position)
+
+  function calculateScore() {
+    let currentScore = 0
+    if (turn.score) {
+      // currentScore+= turn.score
+      console.log(turn.score)
+    }
+  }
+
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
     if (position === null) {
@@ -82,7 +91,6 @@ export default function Game(props) {
     else {
       axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
         .then(response => {
-          console.log('Hello from response', response);
           showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
           
           //remember turn result in the state to use in the gameSummary

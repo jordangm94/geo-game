@@ -11,7 +11,6 @@ export default function LocationMarker(props) {
     click(event) {
       props.setPosition(event.latlng);
       map.flyTo(event.latlng);
-      console.log(event.latlng);
     }
   });
   //If position has been set by user, return marker component which will mark the map
