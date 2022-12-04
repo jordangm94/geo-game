@@ -17,6 +17,7 @@ export default function Game(props) {
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
+  const [score, setScore] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
