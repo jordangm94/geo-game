@@ -11,7 +11,7 @@ export default function GameStatus(props) {
         </div>
         <div className="game-status-score">
           <p className="score-title">Score</p>
-          <p className="score-accumulated">1500</p>
+          <p className="score-accumulated">{props.turnScore}</p>
         </div>
       </div>
     </div>

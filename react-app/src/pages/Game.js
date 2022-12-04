@@ -17,7 +17,7 @@ export default function Game(props) {
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
-  const [score, setScore] = useState(null)
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
     async function fetchData() {
@@ -72,7 +72,7 @@ export default function Game(props) {
   }
 
   function calculateScore() {
-    
+
   }
   
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
@@ -87,7 +87,6 @@ export default function Game(props) {
         
         //remember turn result in the state to use in the gameSummary
         turn.score = response.data.score;
-        console.log(turn.score)
         turn.distanceKm = response.data.distanceKm;
         
         setTimeout(() => {
@@ -96,11 +95,14 @@ export default function Game(props) {
         
         if (turn === game.turns[0]) {
           setTurn(game.turns[1]);
+          setScore(turn.score)
         }
         if (turn === game.turns[1]) {
           setTurn(game.turns[2]);
+          setScore(turn.score);
         } if (turn === game.turns[2]) {
           // console.log("Congratulations on completing the game")
+          setScore(turn.score);
         }
       });
     }
@@ -110,7 +112,7 @@ export default function Game(props) {
     <main>
       {(game && !summary) && (
         <>
-          <GameStatus turnNumber={turn.turn_number} />
+          <GameStatus turnNumber={turn.turn_number} turnScore={score} />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
           <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
