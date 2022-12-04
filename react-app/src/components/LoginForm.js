@@ -4,6 +4,7 @@ import axios from "axios";
 import { Form, Button, Input } from "antd";
 
 import "./LoginForm.css";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 export default function LoginForm(props) {
   const [emailLogin, setEmailLogin] = useState("");
@@ -31,7 +32,6 @@ export default function LoginForm(props) {
 
   return (
     <>
-      <section className="login_validation">{errorMessage}</section>
       <Form
         layout="vertical"
         autoComplete="off"
@@ -79,6 +79,13 @@ export default function LoginForm(props) {
             </Button>
           </Form.Item>
         </div>
+        {
+          errorMessage &&
+          <div className="login-validation">
+            <RiErrorWarningLine />
+            <h4>{errorMessage}</h4>
+          </div>
+        }
       </Form >
     </>
   );
