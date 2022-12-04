@@ -88,7 +88,9 @@ export default function Game(props) {
 
   //Function to allow for score to accumulate by making score state equal to previous score plus current score
   function calculateScore() {
-    setScore(score + turn.score);
+    setTimeout(() => {
+      setScore(score + turn.score);
+    }, 5000);
   }
 
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
