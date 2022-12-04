@@ -70,6 +70,10 @@ export default function Game(props) {
       setErrorState(null);
     }, 3100);
   }
+
+  function calculateScore() {
+    
+  }
   
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
@@ -106,6 +110,7 @@ export default function Game(props) {
     <main>
       {(game && !summary) && (
         <>
+          <GameStatus turnNumber={turn.turn_number} />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
           <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
