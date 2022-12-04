@@ -26,6 +26,8 @@ export default function LoginForm(props) {
       } else {
         navigate("/");
         props.setUser(response.data.user.user_name);
+        props.setUserID(response.data.user.id);
+        setErrorMessage(null);
       }
     });
   };

@@ -28,8 +28,9 @@ export default function RegisterForm(props) {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
-        setErrorMessage(null);
         props.setUser(response.data.user.user_name);
+        props.setUserID(response.data.user.id);
+        setErrorMessage(null);
       }
     });
   };

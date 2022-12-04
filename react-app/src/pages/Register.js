@@ -10,7 +10,7 @@ export default function Register(props) {
       <div className="register-container">
         <div className="register-form">
           <h1>Register</h1>
-          <RegisterForm setUser={props.setUser} />
+          <RegisterForm setUser={props.setUser} setUserID={props.setUserID} />
         </div>
       </div>
     </>
