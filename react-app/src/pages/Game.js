@@ -109,7 +109,7 @@ export default function Game(props) {
 
           setTimeout(() => {
             setPosition(null);
-          }, 4300);
+          }, 5000);
 
           if (turn === game.turns[0]) {
             setTurn(game.turns[1]);
