@@ -23,7 +23,7 @@ After downloading the app off of github, please follow these steps in order to g
 
 ### GlobeHunch - Home page
 
-!["Landing page for GlobeHunch"]()
+!["Landing page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-home.png?raw=true)
 
 
 ## Dependencies: 
