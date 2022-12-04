@@ -71,7 +71,7 @@ export default function Game(props) {
     }, 3100);
   }
 
-  //Function to allow for score to accumulate by making score state equal to previous score current plus score
+  //Function to allow for score to accumulate by making score state equal to previous score plus current score
   function calculateScore() {
     setScore(score + turn.score)
   }
