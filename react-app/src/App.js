@@ -11,8 +11,6 @@ import Register from "./pages/Register";
 import Leaderboard from "./pages/Leaderboard";
 import Game from './pages/Game';
 import React from 'react';
-import GameSummary from "./components/GameSummary";
-import Help from "./pages/Tutorial";
 import Tutorial from "./pages/Tutorial";
 
 function App() {
