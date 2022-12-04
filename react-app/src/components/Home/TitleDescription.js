@@ -5,9 +5,6 @@ export default function TitleDescription() {
   return (
     <>
       <div className="home-container">
-        {/* <div className="home-title">
-          Explore the Globe!
-        </div> */}
         <div className="home-game-title-container">
         <h1 className="home-game-title">
           GlobeHunch
