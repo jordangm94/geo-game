@@ -18,6 +18,20 @@ export default function Game(props) {
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
   const [score, setScore] = useState(0) //Score state which will be dynamically adjusted per turn and shown in game status component
+  const [gameNumber, setGameNumber] = useState(1); // 
+
+    // used by  summary to reset all states to initial values.
+  function playAgain() {
+    setGame(null);
+    setTurn(null);
+    setPopupMessage(null);
+    setPopupMessageClass(null);
+    setPosition(null);
+    setErrorState(null);
+    setSummary(null);
+    setScore(0);
+    setGameNumber(gameNumber + 1);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +49,7 @@ export default function Game(props) {
     }
 
     fetchData();
-  }, []);
+  }, [gameNumber]);
   // console.log(game);
   // console.log("Hello from turn:", turn)
   // console.log("Hello from turn score:", turn.score)
@@ -125,7 +139,7 @@ export default function Game(props) {
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
       {errorState && (<NullPositionError />)}
 
-      {summary && (<GameSummary game={game} />)}
+      {summary && (<GameSummary game={game} playAgain={playAgain} />)} 
     </main>
   );
 };

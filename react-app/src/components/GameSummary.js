@@ -9,9 +9,6 @@ export default function GameSummary(props) {
 
   const navigate = useNavigate();
 
-  const navigateToGame = function() {
-    navigate('/game');
-  };
   const navigateToHome = function() {
     navigate('/');
   };
@@ -46,7 +43,7 @@ export default function GameSummary(props) {
         </div>
 
         <div className="summary-button-container">
-          <Button className="button-summary" title={"Play Again"} onClick={navigateToGame} />
+          <Button className="button-summary" title={"Play Again"} onClick={props.playAgain} />
           <Button className="button-summary" title={"Main Menu"} onClick={navigateToHome} />
         </div>
       </div>
