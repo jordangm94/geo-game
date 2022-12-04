@@ -1,4 +1,4 @@
-# Welcome to Globe Hunch
+# Welcome to GlobeHunch
 
 `GlobeHunch` is a single player geographical exploration game in which players use street view images to explore their surroundings and then guess where they are located in the world. 
 
@@ -31,4 +31,4 @@ After downloading the app off of github, please follow these steps in order to g
 
 
 ## Dependencies: 
-* axios
+* Axios
