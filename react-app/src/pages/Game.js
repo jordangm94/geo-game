@@ -16,10 +16,6 @@ export default function Game(props) {
   const [popupMessageClass, setPopupMessageClass] = useState(null);
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
-
-  //CSS of error Message to be applied with change in state
-  // const [nullPositionCSS, setNullPositionCSS] = useState(null);
-  // const [nullPositionCSSTitle, setNullPositionCSSTitle] = useState(null);
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
@@ -73,16 +69,7 @@ export default function Game(props) {
       setErrorState(null);
     }, 3100);
   }
-
-
-  function calculateScore() {
-    let currentScore = 0
-    if (turn.score) {
-      // currentScore+= turn.score
-      console.log(turn.score)
-    }
-  }
-
+  
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
     if (position === null) {
@@ -90,34 +77,34 @@ export default function Game(props) {
     }
     else {
       axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
-        .then(response => {
-          showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
-          
-          //remember turn result in the state to use in the gameSummary
-          turn.score = response.data.score;
-          turn.distanceKm = response.data.distanceKm;
-
-          setTimeout(() => {
-            setPosition(null);
-          }, 4300);
-
-          if (turn === game.turns[0]) {
-            setTurn(game.turns[1]);
-          }
-          if (turn === game.turns[1]) {
-            setTurn(game.turns[2]);
-          } if (turn === game.turns[2]) {
-            // console.log("Congratulations on completing the game")
-          }
-        });
+      .then(response => {
+        showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
+        
+        //remember turn result in the state to use in the gameSummary
+        turn.score = response.data.score;
+        console.log(turn.score)
+        turn.distanceKm = response.data.distanceKm;
+        
+        setTimeout(() => {
+          setPosition(null);
+        }, 4300);
+        
+        if (turn === game.turns[0]) {
+          setTurn(game.turns[1]);
+        }
+        if (turn === game.turns[1]) {
+          setTurn(game.turns[2]);
+        } if (turn === game.turns[2]) {
+          // console.log("Congratulations on completing the game")
+        }
+      });
     }
   };
-
+  
   return (
     <main>
       {(game && !summary) && (
         <>
-          <GameStatus turnNumber={turn.turn_number}/>
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
           <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
