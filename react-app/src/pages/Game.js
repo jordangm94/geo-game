@@ -17,7 +17,7 @@ export default function Game(props) {
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(0) //Score state which will be dynamically adjusted per turn and shown in game status component
 
   useEffect(() => {
     async function fetchData() {
@@ -71,8 +71,9 @@ export default function Game(props) {
     }, 3100);
   }
 
+  //Function to allow for score to accumulate by making score state equal to previous score current plus score
   function calculateScore() {
-
+    setScore(score + turn.score)
   }
   
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
@@ -95,14 +96,17 @@ export default function Game(props) {
         
         if (turn === game.turns[0]) {
           setTurn(game.turns[1]);
-          setScore(turn.score)
+          calculateScore()
+          // setScore(turn.score)
         }
         if (turn === game.turns[1]) {
           setTurn(game.turns[2]);
-          setScore(turn.score);
+          calculateScore()
+          // setScore(turn.score);
         } if (turn === game.turns[2]) {
+          calculateScore()
           // console.log("Congratulations on completing the game")
-          setScore(turn.score);
+          // setScore(turn.score);
         }
       });
     }
