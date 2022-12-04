@@ -1,6 +1,5 @@
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import AnswerMap from '../components/AnswerMap';
 
 import "./GameSummary.css";
 
