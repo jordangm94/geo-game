@@ -27,7 +27,7 @@ After downloading the app off of github, please follow these steps in order to g
 
 ### GlobeHunch - Game page
 
-!["Game page for GlobeHunch"]()
+!["Game page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-game1.png?raw=true)
 
 
 ## Dependencies: 
