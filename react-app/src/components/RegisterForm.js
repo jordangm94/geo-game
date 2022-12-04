@@ -4,6 +4,7 @@ import axios from "axios";
 import { Form, Button, Input } from "antd";
 
 import "./RegisterForm.css";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 
 export default function RegisterForm(props) {
@@ -11,7 +12,7 @@ export default function RegisterForm(props) {
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -27,6 +28,7 @@ export default function RegisterForm(props) {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
+        setErrorMessage(null);
         props.setUser(response.data.user.user_name);
       }
     });
@@ -34,7 +36,6 @@ export default function RegisterForm(props) {
 
   return (
     <>
-      <section className="appointment__validation">{errorMessage}</section>
       <Form
         layout="vertical"
         autoComplete="off"
@@ -127,6 +128,13 @@ export default function RegisterForm(props) {
             </Button>
           </Form.Item>
         </div>
+        {
+          errorMessage &&
+          <div className="register-validation">
+            <RiErrorWarningLine />
+            <h4>{errorMessage}</h4>
+          </div>
+        }
       </Form >
     </>
   );

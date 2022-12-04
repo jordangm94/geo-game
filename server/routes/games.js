@@ -92,7 +92,7 @@ module.exports = db => {
       return 0;
     }
 
-    return roundScore;
+    return Math.round(roundScore);
   }
 
   // get user's games

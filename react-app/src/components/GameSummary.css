@@ -108,4 +108,6 @@
   border-color: #19191a;
   right: 19.5%;
   bottom: 15%;
+  cursor: pointer;
+  align-items: center;
 }
