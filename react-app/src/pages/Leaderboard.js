@@ -22,7 +22,12 @@ export default function Leaderboard(props) {
     return (
       <li className="leader" key={index}>
         <div>{index + 1}</div>
-        <div>{line.user_name}</div>
+        <div>
+          {(line.user_id === props.userID && (<span className="flag">🏁&nbsp;</span>))}
+          {line.user_name}
+          {(line.user_id === props.userID && (<span className="flag">🏁&nbsp;</span>))}
+
+        </div>
         <div>{line.total_for_game}</div>
       </li>);
   });
@@ -41,13 +46,6 @@ export default function Leaderboard(props) {
           <div>User</div>
           <div>Best Score</div>
         </li>
-
-        {/* if current user exists it will be shown on line 1 */}
-        {currentUser && (<li className="leader me">
-          <div><span>{currentUserIndex + 1}</span></div>
-          <div><span className="crown">👑</span>{currentUser.user_name}<span className="crown">👑</span></div>
-          <div>{currentUser.total_for_game}</div>
-        </li>)}
 
         {scoreElements}
       </ul>
