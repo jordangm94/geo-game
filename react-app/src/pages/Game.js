@@ -16,11 +16,22 @@ export default function Game(props) {
   const [popupMessageClass, setPopupMessageClass] = useState(null);
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
-
-  //CSS of error Message to be applied with change in state
-  // const [nullPositionCSS, setNullPositionCSS] = useState(null);
-  // const [nullPositionCSSTitle, setNullPositionCSSTitle] = useState(null);
   const [summary, setSummary] = useState(null);
+  const [score, setScore] = useState(0) //Score state which will be dynamically adjusted per turn and shown in game status component
+  const [gameNumber, setGameNumber] = useState(1); // 
+
+    // used by  summary to reset all states to initial values.
+  function playAgain() {
+    setGame(null);
+    setTurn(null);
+    setPopupMessage(null);
+    setPopupMessageClass(null);
+    setPosition(null);
+    setErrorState(null);
+    setSummary(null);
+    setScore(0);
+    setGameNumber(gameNumber + 1);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -38,9 +49,10 @@ export default function Game(props) {
     }
 
     fetchData();
-  }, []);
+  }, [gameNumber]);
   // console.log(game);
-  console.log("Hello from turn:", turn)
+  // console.log("Hello from turn:", turn)
+  // console.log("Hello from turn score:", turn.score)
 
   // showing congrats popup with score
   function showResult(messageKm, messageKmScore) {
@@ -49,10 +61,11 @@ export default function Game(props) {
     setTimeout(() => {
       setPopupMessageClass("visibleMessage"); // adding class attribute to make it visible 
       setPopupMessage(messageKm);
-      setTimeout(() => {
-        setPopupMessage(messageKmScore);
-      }, 2500);
-    }, 1000);
+    }, 1200);
+  
+    setTimeout(() => {
+      setPopupMessage(messageKmScore);
+    }, 3000);
 
     setTimeout(() => {
       setPopupMessage(null);
@@ -63,7 +76,7 @@ export default function Game(props) {
         setSummary(game);
       }
 
-    }, 8000); // remove popup from the screen
+    }, 5000); // remove popup from the screen
   }
 
   function showError() {
@@ -73,7 +86,11 @@ export default function Game(props) {
     }, 3100);
   }
 
-  // console.log(position)
+  //Function to allow for score to accumulate by making score state equal to previous score plus current score
+  function calculateScore() {
+    setScore(score + turn.score);
+  }
+
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
   const nextTurn = function() {
     if (position === null) {
@@ -82,9 +99,8 @@ export default function Game(props) {
     else {
       axios.put(`api/calculate/${turn.id}`, { questionLat: turn.latitude, questionLon: turn.longitude, answerLat: position.lat, answerLon: position.lng })
         .then(response => {
-          console.log('Hello from response', response);
           showResult(`You are ${response.data.distanceKm}km away.`, `You are ${response.data.distanceKm}km away.\n Your score is ${response.data.score}.`);
-          
+
           //remember turn result in the state to use in the gameSummary
           turn.score = response.data.score;
           turn.distanceKm = response.data.distanceKm;
@@ -95,11 +111,17 @@ export default function Game(props) {
 
           if (turn === game.turns[0]) {
             setTurn(game.turns[1]);
+            calculateScore();
+            // setScore(turn.score)
           }
           if (turn === game.turns[1]) {
             setTurn(game.turns[2]);
+            calculateScore();
+            // setScore(turn.score);
           } if (turn === game.turns[2]) {
+            calculateScore();
             // console.log("Congratulations on completing the game")
+            // setScore(turn.score);
           }
         });
     }
@@ -109,7 +131,7 @@ export default function Game(props) {
     <main>
       {(game && !summary) && (
         <>
-          <GameStatus turnNumber={turn.turn_number}/>
+          <GameStatus turnNumber={turn.turn_number} turnScore={score} />
           <QuestionMap turn={turn} />
           <AnswerMap position={position} setPosition={setPosition} />
           <Button position={position} onClick={nextTurn} className={"button-game-answer"} title={"Answer"} />
@@ -118,7 +140,7 @@ export default function Game(props) {
       {popupMessage && (<Popup message={popupMessage} messageClass={popupMessageClass} />)}
       {errorState && (<NullPositionError />)}
 
-      {summary && (<GameSummary game={game} />)}
+      {summary && (<GameSummary game={game} playAgain={playAgain} />)}
     </main>
   );
 };
