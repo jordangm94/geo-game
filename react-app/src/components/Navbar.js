@@ -55,8 +55,8 @@ export default function Navbar(props) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/help" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
-                  Help
+                <NavLink to="/tutorial" className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")} onClick={closeMobileMenu}>
+                  Tutorial
                 </NavLink>
               </li>
               {!props.loggedInUser && (
