@@ -4,8 +4,7 @@ import AnswerMap from '../components/AnswerMap';
 
 import "./GameSummary.css";
 
-
-export default function GameSummary(props) {
+export default function GameSummary({ game, playAgain }) {
 
   const navigate = useNavigate();
 
@@ -14,12 +13,11 @@ export default function GameSummary(props) {
   };
 
   let totalScore = 0;
-  for (let i = 0; i < props.game.turns.length; i++) {
-    totalScore += props.game.turns[i].score;
+  for (let i = 0; i < game.turns.length; i++) {
+    totalScore += game.turns[i].score;
   }
 
-
-  let turnElements = props.game.turns.map((turn) => {
+  let turnElements = game.turns.map((turn) => {
     return (
       <li>
         <div>Round {turn.turn_number}</div>
@@ -43,7 +41,7 @@ export default function GameSummary(props) {
         </div>
 
         <div className="summary-button-container">
-          <Button className="button-summary" title={"Play Again"} onClick={props.playAgain} />
+          <Button className="button-summary" title={"Play Again"} onClick={playAgain} />
           <Button className="button-summary" title={"Main Menu"} onClick={navigateToHome} />
         </div>
       </div>
