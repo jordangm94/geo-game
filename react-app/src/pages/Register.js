@@ -1,12 +1,18 @@
 import RegisterForm from "../components/RegisterForm";
+import Video from "../components/Home/Video";
 
 import "./Register.css";
 
 export default function Register(props) {
   return (
-    <div className="register-form">
-      <h1>Register</h1>
-      <RegisterForm setUser={props.setUser} />
-    </div>
+    <>
+      <Video />
+      <div className="register-container">
+        <div className="register-form">
+          <h1>Register</h1>
+          <RegisterForm setUser={props.setUser} />
+        </div>
+      </div>
+    </>
   );
 }
