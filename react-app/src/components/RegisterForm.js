@@ -137,7 +137,7 @@ export default function RegisterForm(props) {
           </div>
         }
         <div className="redirect-login">
-          <h4>Already have an account? <a href="/login">Login</a></h4>
+          <h4>Already have an account? <a href="/login">Log In</a></h4>
         </div>
       </Form >
     </>
