@@ -19,9 +19,10 @@ export default function HomePageContents() {
           <h1 className="home-game-title">
             GlobeHunch
           </h1>
+          <h1 className="home-game-title-mobile">Globe<br/>Hunch</h1>
         </div>
         <div className="home-description">
-          Survey incredible surroundings, learn about new locations, <br />all while earning points and climbing the leaderboard.<br /><strong>Free to play!</strong>
+          Survey incredible surroundings, learn about new locations, <br/>all while earning points and climbing the leaderboard.<br /><strong>Free to play!</strong>
         </div>
         <Button className={"button-home-playnow"} title={"Play Now"} onClick={navigateToGame} />
       </div>
