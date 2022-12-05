@@ -18,7 +18,7 @@ export default function Game(props) {
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
   const [score, setScore] = useState(0); //Score state which will be dynamically adjusted per turn and shown in game status component
-  const [gameNumber, setGameNumber] = useState(1); // 
+  const [gameNumber, setGameNumber] = useState(1);
 
   // used by  summary to reset all states to initial values.
   function playAgain() {
@@ -67,8 +67,6 @@ export default function Game(props) {
       setPopupMessage(null);
       // check the last round to show the gameSummary component
       if (turn === game.turns[2]) {
-        console.log("Hello from game:", game);
-
         setSummary(game);
       }
 

@@ -8,7 +8,6 @@ export default function HomePageContents() {
   const navigate = useNavigate();
 
   const navigateToGame = function() {
-    console.log("Click function navigate to game");
     navigate('/game');
   };
 
