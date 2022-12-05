@@ -17,34 +17,27 @@ video {
   align-items: center;
 }
 
-/* .home-game-title-container {
-  display: flex;
-  justify-content: flex-end;
-} */
 .home-game-title {
   font-family: "Ultra", serif;
   font-size: 6em;
   margin-right: 0.5em;
   margin-left: 0.5em;
   color: #19191a;
-  /* overflow-wrap:break-word; */
 }
 
 .home-description {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 30px;
   color: black;
-  /* margin-right: 3.5em;
-  margin-left: 0.5em; */
   text-align: center;
 }
 
-/* This will flush span tag that contains word "hunch" down one line when screen size drops below 961px */
 @media only screen and (max-width: 960px) {
+  /* This will push span tag that contains word "hunch" down one line when screen size drops below 961px */
   .home-game-title span {
     display: block;
   }
-
+  /* This will center title, description and button */
   .home-container {
     position: absolute;
     width: 100%;
@@ -57,7 +50,7 @@ video {
   .home-description br {
     display: none;
   }
-
+  /* This ensures "Free to Play" is always at the bottom of description paragraph */
   .home-description strong {
     display: block;
   }
