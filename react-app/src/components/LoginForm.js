@@ -88,6 +88,9 @@ export default function LoginForm(props) {
             <h4>{errorMessage}</h4>
           </div>
         }
+        <div className="redirect-register">
+          <h4>Don't have an account? <a href="/login">Register</a></h4>
+        </div>
       </Form >
     </>
   );
