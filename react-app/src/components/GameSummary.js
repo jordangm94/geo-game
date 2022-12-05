@@ -16,7 +16,7 @@ export default function GameSummary({ game, playAgain }) {
     totalScore += game.turns[i].score;
   }
 
-  let turnElements = game.turns.map((turn) => {
+  let turnElements = game.turns.map((turn, index) => {
     return (
       <li>
         <div>Round {turn.turn_number}</div>
