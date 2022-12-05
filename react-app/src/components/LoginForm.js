@@ -89,7 +89,7 @@ export default function LoginForm(props) {
           </div>
         }
         <div className="redirect-register">
-          <h4>Don't have an account? <a href="/login">Register</a></h4>
+          <h4>Don't have an account? <a href="/register">Register</a></h4>
         </div>
       </Form >
     </>
