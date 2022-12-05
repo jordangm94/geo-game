@@ -1,6 +1,6 @@
 .button-home-playnow {
   cursor: pointer;
-  position: absolute;
+  position: relative;
   font-family: 'Ultra', serif;
   border-radius: 1rem;
   border: 0;
@@ -11,8 +11,8 @@
   border-color: #19191a;
   color: white;
   background-color: #19191a;
-  right: 19.5%;
-  bottom: 30%;
+  margin-top: 2em;
+
 }
 
 .button-game-answer {
