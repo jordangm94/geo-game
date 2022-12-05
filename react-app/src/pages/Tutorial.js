@@ -1,12 +1,12 @@
 import "./Tutorial.css"
-import HelpTitleDescription from "../components/Tutorial/HelpTitleDescription"
 import TutorialVideo from "../components/Tutorial/TutorialVideo"
+import TutorialTitleDescription from "../components/Tutorial/TutorialTitleDescription";
 
 export default function Tutorial() {
 
   return (
     <main className="help-page-container">
-      <HelpTitleDescription />
+      <TutorialTitleDescription />
       <TutorialVideo />
     </main>
   )
