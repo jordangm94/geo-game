@@ -1,7 +1,8 @@
+/* CSS for button on home page */
 .button-home-playnow {
   cursor: pointer;
   position: relative;
-  font-family: 'Ultra', serif;
+  font-family: "Ultra", serif;
   border-radius: 1rem;
   border: 0;
   font-size: 1.5rem;
@@ -12,14 +13,14 @@
   color: white;
   background-color: #19191a;
   margin-top: 2em;
-
 }
 
+/* CSS for button on top right of answer map */
 .button-game-answer {
   z-index: 100;
   cursor: pointer;
   position: absolute;
-  font-family: 'Ultra', serif;
+  font-family: "Ultra", serif;
   border-radius: 1rem;
   border: 0;
   font-size: 1.5rem;
