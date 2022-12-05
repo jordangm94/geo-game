@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Input } from "antd";
 
@@ -136,6 +136,9 @@ export default function RegisterForm(props) {
             <h4>{errorMessage}</h4>
           </div>
         }
+        <div className="redirect-login">
+          <h4>Already have an account? <a href="/login">Login</a></h4>
+        </div>
       </Form >
     </>
   );
