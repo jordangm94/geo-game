@@ -6,6 +6,21 @@ Points are awarded based on how far or close a user's guess is to the actual loc
 
 GlobeHunch is a full stack web application built with `ReactJS` on the front end and an `Express` server for the back end. The GlobeHunch application calls upon the `bing maps API` and `leaflet API`.
 
+## Creating The DB
+
+Use the `psql -U development` command to login to the PostgreSQL server with the username `development` and the password `development`. This command must be run in a vagrant terminal.
+
+Create a database with the command `CREATE DATABASE game_development;`.
+Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+
+```
+PGHOST=localhost
+PGUSER=development
+PGDATABASE=game_development
+PGPASSWORD=development
+PGPORT=5432
+```
+
 ## Setup
 After downloading the app off of github, please follow these steps in order to get the application up and running: 
 
@@ -18,6 +33,7 @@ After downloading the app off of github, please follow these steps in order to g
 3. From within the server directory run `npm start`
 
 4. Visit http://localhost:3000/ in order to see the app and play. Goodluck!
+
 
 ## Final Product:
 
