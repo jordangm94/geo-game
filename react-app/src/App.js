@@ -14,19 +14,25 @@ import React from 'react';
 import Tutorial from "./pages/Tutorial";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [userID, setUserID] = useState(null);
+  const [user, setUser] = useState(localStorage.getItem('user'));
+  const [userID, setUserID] = useState(localStorage.getItem('userID'));
 
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.post("/api/authenticate", {}).then(response => {
-      if (!response.data.error) {
-        setUser(response.data.user.user_name);
-        setUserID(response.data.user.id);
-      }
-    });
+    if (!user) {
+      axios.post("/api/authenticate", {}).then(response => {
+        if (!response.data.error) {
+          localStorage.setItem('user', response.data.user.user_name);
+          localStorage.setItem('userID', response.data.user.id);
+          setUser(response.data.user.user_name);
+          setUserID(response.data.user.id);
+        }
+      });
+    }
   });
+
+  console.log(user);
 
   return (
     <>

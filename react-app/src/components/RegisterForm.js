@@ -28,6 +28,8 @@ export default function RegisterForm(props) {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
+        localStorage.setItem('user', response.data.user.user_name);
+        localStorage.setItem('userID', response.data.user.id);
         props.setUser(response.data.user.user_name);
         props.setUserID(response.data.user.id);
         setErrorMessage(null);
