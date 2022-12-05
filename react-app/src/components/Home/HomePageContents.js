@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 //This comomponent holds all contents appearing on top of video on home page: GlobeHunch title, description, and play now button
 
-export default function TitleDescription() {
+export default function HomePageContents() {
 
   const navigate = useNavigate();
 
