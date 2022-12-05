@@ -21,10 +21,17 @@ video {
   display: flex;
   justify-content: flex-end;
 } */
-
+.home-game-title {
+  font-family: "Ultra", serif;
+  font-size: 6em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  color: #19191a;
+  /* overflow-wrap:break-word; */
+}
 
 .home-description {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 30px;
   color: black;
   /* margin-right: 3.5em;
@@ -32,24 +39,26 @@ video {
   text-align: center;
 }
 
-@media only screen and (min-width: 961px) {
-  .home-game-title {
-    font-family: 'Ultra', serif;
-    font-size: 6em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-    color: #19191a;
-    /* overflow-wrap:break-word; */
+/* This will flush span tag that contains word "hunch" down one line when screen size drops below 961px */
+@media only screen and (max-width: 960px) {
+  .home-game-title span {
+    display: block;
   }
 
-}
+  .home-container {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    padding: 0 15px;
+  }
 
-@media only screen and (max-width: 960px) {
-  .home-game-title-mobile {
-    font-family: 'Ultra', serif;
-    font-size: 6em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-    color: black;
+  .home-description br {
+    display: none;
+  }
+
+  .home-description strong {
+    display: block;
   }
 }

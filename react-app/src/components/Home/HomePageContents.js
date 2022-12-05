@@ -17,9 +17,8 @@ export default function HomePageContents() {
       <div className="home-container">
         <div className="home-game-title-container">
           <h1 className="home-game-title">
-            GlobeHunch
+            Globe<span>Hunch</span>
           </h1>
-          <h1 className="home-game-title-mobile">Globe<br/>Hunch</h1>
         </div>
         <div className="home-description">
           Survey incredible surroundings, learn about new locations, <br/>all while earning points and climbing the leaderboard.<br /><strong>Free to play!</strong>
