@@ -28,6 +28,7 @@ video {
   margin-right: 0.5em;
   margin-left: 0.5em;
   color: #19191a;
+  /* overflow-wrap: break-word; */
 }
 
 .home-description {

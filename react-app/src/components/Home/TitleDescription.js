@@ -1,3 +1,5 @@
+//This comomponent holds the GlobeHunch brand text and description for the home page
+
 export default function TitleDescription() {
 
   return (
