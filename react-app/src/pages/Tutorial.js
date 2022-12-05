@@ -1,4 +1,4 @@
-import "./Help.css"
+import "./Tutorial.css"
 import HelpTitleDescription from "../components/Tutorial/HelpTitleDescription"
 import TutorialVideo from "../components/Tutorial/TutorialVideo"
 

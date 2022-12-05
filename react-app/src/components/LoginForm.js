@@ -4,6 +4,7 @@ import axios from "axios";
 import { Form, Button, Input } from "antd";
 
 import "./LoginForm.css";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 export default function LoginForm(props) {
   const [emailLogin, setEmailLogin] = useState("");
@@ -24,14 +25,17 @@ export default function LoginForm(props) {
         setErrorMessage(response.data.message);
       } else {
         navigate("/");
+        localStorage.setItem('user', response.data.user.user_name);
+        localStorage.setItem('userID', response.data.user.id);
         props.setUser(response.data.user.user_name);
+        props.setUserID(response.data.user.id);
+        setErrorMessage(null);
       }
     });
   };
 
   return (
     <>
-      <section className="login_validation">{errorMessage}</section>
       <Form
         layout="vertical"
         autoComplete="off"
@@ -78,6 +82,16 @@ export default function LoginForm(props) {
               Log In
             </Button>
           </Form.Item>
+        </div>
+        {
+          errorMessage &&
+          <div className="login-validation">
+            <RiErrorWarningLine />
+            <h4>{errorMessage}</h4>
+          </div>
+        }
+        <div className="redirect-register">
+          <h4>Don't have an account? <a href="/register">Register</a></h4>
         </div>
       </Form >
     </>

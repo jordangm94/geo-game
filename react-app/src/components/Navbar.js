@@ -19,7 +19,10 @@ export default function Navbar(props) {
   const logout = () => {
     axios.post("/api/logout", {}).then(response => {
       if (!response.data.error) {
-        props.setUser("");
+        localStorage.removeItem('user');
+        localStorage.removeItem('userID');
+        props.setUser(null);
+        props.setUserID(null);
         closeMobileMenu();
         navigate("/");
       }

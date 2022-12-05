@@ -6,3 +6,24 @@
 .ant-input-affix-wrapper {
   width: 20em;
 }
+
+.login-validation {
+  background-color: rgba(246, 121, 121, 0.479);
+  color: red;
+  border: solid 2px red;
+  border-radius: 25px;
+  height: auto;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.redirect-register {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
