@@ -1,4 +1,4 @@
-export default function HelpTitleDescription() {
+export default function TutorialTitleDescription() {
 
   return (
     <div className="help-title-description-container">

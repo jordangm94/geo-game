@@ -36,18 +36,3 @@
     transform: rotate(360deg);
   }
 }
-/* 
-.questionMap {
-  animation-name: revealMap;
-  animation-duration: 8s;
-}
-
-@keyframes revealMap {
-  from {
-    opacity: 0;
-   
-  }
-  to {
-    opacity: 1;
-  }
-} */

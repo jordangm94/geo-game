@@ -33,8 +33,6 @@ function App() {
     });
   });
 
-  console.log(user);
-
   return (
     <>
       <Navbar loggedInUser={user} setUser={setUser} setUserID={setUserID} />

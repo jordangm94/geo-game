@@ -1,4 +1,4 @@
-import "./GameStatus.css"
+import "./GameStatus.css";
 
 export default function GameStatus(props) {
 

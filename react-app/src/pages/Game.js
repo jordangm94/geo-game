@@ -17,10 +17,10 @@ export default function Game(props) {
   const [position, setPosition] = useState(null); //Lifted position state into game component so that it can be passed to answer map, as well as answer button to prevent answer button switching turn if no position set.
   const [errorState, setErrorState] = useState(null); //Error state to handle conditional rendering of error message if user did not select location (position null)
   const [summary, setSummary] = useState(null);
-  const [score, setScore] = useState(0) //Score state which will be dynamically adjusted per turn and shown in game status component
-  const [gameNumber, setGameNumber] = useState(1); // 
+  const [score, setScore] = useState(0); //Score state which will be dynamically adjusted per turn and shown in game status component
+  const [gameNumber, setGameNumber] = useState(1);
 
-    // used by  summary to reset all states to initial values.
+  // used by  summary to reset all states to initial values.
   function playAgain() {
     setGame(null);
     setTurn(null);
@@ -45,14 +45,10 @@ export default function Game(props) {
       let gameData = await response.json();
       setGame(gameData); //This will set state of game to value of gameData object from DB
       setTurn(gameData.turns[0]); //This will set the turn to the first first turn in the game
-      // console.log(gameData.turns)
     }
 
     fetchData();
   }, [gameNumber]);
-  // console.log(game);
-  // console.log("Hello from turn:", turn)
-  // console.log("Hello from turn score:", turn.score)
 
   // showing congrats popup with score
   function showResult(messageKm, messageKmScore) {
@@ -62,7 +58,7 @@ export default function Game(props) {
       setPopupMessageClass("visibleMessage"); // adding class attribute to make it visible 
       setPopupMessage(messageKm);
     }, 1200);
-  
+
     setTimeout(() => {
       setPopupMessage(messageKmScore);
     }, 3000);
@@ -71,8 +67,6 @@ export default function Game(props) {
       setPopupMessage(null);
       // check the last round to show the gameSummary component
       if (turn === game.turns[2]) {
-        console.log("Hello from game:", game);
-
         setSummary(game);
       }
 
@@ -90,7 +84,7 @@ export default function Game(props) {
   function calculateScore() {
     setTimeout(() => {
       setScore(score + turn.score);
-    }, 5000);
+    }, 5000); //Calculate cumulative score after 5 seconds (length of time it takes for pop up to disappear)
   }
 
   //Create a function that increments through array of turn objects and sets state to new turn object each time answer button is clicked
@@ -114,16 +108,14 @@ export default function Game(props) {
           if (turn === game.turns[0]) {
             setTurn(game.turns[1]);
             calculateScore();
-            // setScore(turn.score)
+
           }
           if (turn === game.turns[1]) {
             setTurn(game.turns[2]);
             calculateScore();
-            // setScore(turn.score);
+
           } if (turn === game.turns[2]) {
             calculateScore();
-            // console.log("Congratulations on completing the game")
-            // setScore(turn.score);
           }
         });
     }

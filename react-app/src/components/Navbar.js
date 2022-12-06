@@ -97,5 +97,3 @@ export default function Navbar(props) {
     </>
   );
 };
-
-// Change h1 Logo to an image tag when we have a logo
