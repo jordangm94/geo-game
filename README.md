@@ -32,7 +32,13 @@ After downloading the app off of github, please follow these steps in order to g
 
 3. From within the server directory run `npm start`
 
-4. Visit http://localhost:3000/ in order to see the app and play. Goodluck!
+4. In order for the Application to run you will need to get a Bing Maps API Key. Please visit: https://www.bingmapsportal.com/ 
+After signing in, click on create an account and select my keys. From here select create new key and ensure the key type is set to basic. This will provide you with a free Bing Maps API key valid for 125,000 transactions. 
+
+5. Once you have your key, make a copy of the .env.example file and rename it to .env. Plug in your key where required as shown below, do not include the quotation marks/
+* REACT_APP_API_KEY="Your key goes here"
+
+6. Visit http://localhost:3000/ in order to see the app and play. Goodluck!
 
 
 ## Final Product:
@@ -52,8 +58,6 @@ After downloading the app off of github, please follow these steps in order to g
 ### Tutorial page
 
 !["Tutorial page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-tutorial.png?raw=true)
-
-
 
 ## Dependencies: 
 * Express
