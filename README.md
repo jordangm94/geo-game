@@ -26,17 +26,17 @@ After downloading the app off of github, please follow these steps in order to g
 
 1. Using your terminal, cd into the react app directory and npm install. Cd into the server directory and do the same thing.
 
-`NOTE`: You will need two terminal windows open in order to run this app, one for the React APP and one for the server`
+* `NOTE`: You will need two terminal windows open in order to run this app, one for the React APP and one for the server`
 
-2. From within the React App Directory run `npm start`
+3. In order for the Application to run you will need to get a Bing Maps API Key. Please visit: https://www.bingmapsportal.com/ After creating an account and signing in, click on my account and select my keys. From here select create a new key and ensure the key type is set to basic. This will provide you with a free Bing Maps API key valid for 125,000 transactions. 
 
-3. From within the server directory run `npm start`
-
-4. In order for the Application to run you will need to get a Bing Maps API Key. Please visit: https://www.bingmapsportal.com/ 
-After signing in, click on create an account and select my keys. From here select create new key and ensure the key type is set to basic. This will provide you with a free Bing Maps API key valid for 125,000 transactions. 
-
-5. Once you have your key, make a copy of the .env.example file and rename it to .env. Plug in your key where required as shown below, do not include the quotation marks/
+4. Once you have your key, make a copy of the .env.example file in the react app directory and rename it to .env. Plug in your key where required as shown below, do not include the quotation marks:
 * REACT_APP_API_KEY="Your key goes here"
+
+5. Now that everything is ready to go, from within the React App Directory in your terminal run `npm start`.
+
+6. From within the server directory in your terminal run `npm start`.
+
 
 6. Visit http://localhost:3000/ in order to see the app and play. Goodluck!
 
