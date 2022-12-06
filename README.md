@@ -37,13 +37,22 @@ After downloading the app off of github, please follow these steps in order to g
 
 ## Final Product:
 
-### GlobeHunch - Home page
+### Home page
 
 !["Landing page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-home.png?raw=true)
 
-### GlobeHunch - Game page
+### Game page
 
 !["Game page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-game1.png?raw=true)
+
+### Game page - Second photo
+
+!["Second photo of game page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-game2.png?raw=true)
+
+### Tutorial page
+
+!["Tutorial page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-tutorial.png?raw=true)
+
 
 
 ## Dependencies: 
