@@ -20,16 +20,17 @@ function App() {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    if (!user) {
-      axios.post("/api/authenticate", {}).then(response => {
-        if (!response.data.error) {
-          localStorage.setItem('user', response.data.user.user_name);
-          localStorage.setItem('userID', response.data.user.id);
-          setUser(response.data.user.user_name);
-          setUserID(response.data.user.id);
-        }
-      });
-    }
+    axios.post("/api/authenticate", {}).then(response => {
+      if (!response.data.error) {
+        localStorage.setItem('user', response.data.user.user_name);
+        localStorage.setItem('userID', response.data.user.id);
+        setUser(response.data.user.user_name);
+        setUserID(response.data.user.id);
+      } else {
+        localStorage.removeItem('user');
+        localStorage.removeItem('userID');
+      }
+    });
   });
 
   console.log(user);
