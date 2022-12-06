@@ -17,12 +17,14 @@
   position: relative;
   top: 0;
   z-index: 999;
+  position: fixed; 
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   height: 80px;
+
 }
 
 .container {
