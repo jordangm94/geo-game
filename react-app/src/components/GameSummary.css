@@ -94,4 +94,6 @@
   bottom: 15%;
   cursor: pointer;
   align-items: center;
+  box-shadow: 10px 10px 35px 1px rgba(26,26,54,0.92);
+
 }

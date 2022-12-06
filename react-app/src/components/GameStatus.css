@@ -10,6 +10,7 @@
   border-bottom-right-radius: 20px;
   color: whitesmoke;
   background-color: #19191a;
+  box-shadow: 10px 10px 35px 1px rgba(0,0,0,0.77);
 }
 
 .inner-game-status {
@@ -18,4 +19,5 @@
   font-size: large;
   display: flex;
   justify-content: space-around;
+
 }
