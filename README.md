@@ -56,4 +56,13 @@ After downloading the app off of github, please follow these steps in order to g
 
 
 ## Dependencies: 
+* Express
+* Bcrypyt
+* Cookie session
+* Pg
 * Axios
+* Antd
+* Bingmaps React
+* Leaflet
+* React-Leaflet
+* React Router
