@@ -63,14 +63,17 @@ After downloading the app off of github, please follow these steps in order to g
 
 !["Tutorial page for GlobeHunch"](https://github.com/jordangm94/geo-game/blob/master/docs/globehunch-tutorial.png?raw=true)
 
-## Dependencies: 
+## Front End Dependencies: 
+* Antd
+* Bingmaps React
+* Leaflet
+* React-Leaflet
+* React-Router-Dom
+* React-icons
+
+## Back End Dependencies: 
 * Express
 * Bcrypyt
 * Cookie session
 * Pg
 * Axios
-* Antd
-* Bingmaps React
-* Leaflet
-* React-Leaflet
-* React Router
