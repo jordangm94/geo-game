@@ -8,11 +8,12 @@
 .leaderList {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
   width: 100vw;
   position: absolute;
-  margin-top: 10em;
+  margin-top: 2em;
   font-weight: 100;
   font-family: 'Ultra', serif;
   font-size: larger;
