@@ -6,6 +6,7 @@
   width: 100vw;
   background-image: url('Tutorial-Background.jpg');
   background-size: cover;
+  /* margin-top: 70px; */
 }
 
 .help-title-description-container {

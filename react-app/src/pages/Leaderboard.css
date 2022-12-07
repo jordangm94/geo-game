@@ -2,7 +2,6 @@
   height: 100vh;
   width: 100vw;
   object-fit: cover;
-
 }
 
 .leaderList {
@@ -25,17 +24,14 @@
   padding: 16px;
   gap: 10em;
   width: 840px;
-  /* justify-content: space-between; */
   border: 1px solid rgba(73, 65, 55, 0.507);
   color: rgb(70, 55, 38);
   background-color: rgba(216, 192, 162, 0.507);
-  /* align-items: stretch; */
 }
 
 .leader div:nth-of-type(1) {
   flex-grow: 1;
   text-align: left;
-  
 }
 
 .leader div:nth-of-type(2) {
@@ -46,7 +42,6 @@
 .leader div:nth-of-type(3) {
   flex-grow: 1;
   text-align: right;
-
 }
 
 .leader.header {
@@ -55,12 +50,6 @@
   color: rgb(230, 226, 223);
   background-color: rgba(37, 22, 2, 0.507);
 }
-/* 
-.leader.me>div:first-child {
-  align-items: stretch;
-  justify-content: center;
-  
-} */
 
 .flag {
   font-size: larger;
