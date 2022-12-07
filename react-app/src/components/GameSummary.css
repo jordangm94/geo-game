@@ -4,8 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  margin-top: 70px;
-
+  /* margin-top: 70px; */
 }
 
 .title{

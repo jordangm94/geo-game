@@ -5,9 +5,7 @@
 }
 
 .navbar {
-
-  background: rgb(25, 25, 26);
-  background: linear-gradient(180deg, rgba(25, 25, 26, 1) 0%, rgba(25, 25, 26, 1) 90%, rgba(25, 25, 26, 0.2231093120842087) 100%);
+  background: #19191a;
   height: 90px;
 
   /* background: #19191a; */
@@ -22,7 +20,6 @@
   position: relative;
   top: 0;
   z-index: 999;
-  position: fixed;
 }
 
 .navbar-container {
