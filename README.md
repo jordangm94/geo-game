@@ -28,7 +28,7 @@ After downloading the app off of github, please follow these steps in order to g
 
 * `NOTE`: You will need two terminal windows open in order to run this app, one for the React APP and one for the server`
 
-2. In order for the Application to run you will need to get a Bing Maps API Key. Please visit: https://www.bingmapsportal.com/ After creating an account and signing in, click on my account and select my keys. From here select create a new key and ensure the key type is set to basic. This will provide you with a free Bing Maps API key valid for 125,000 transactions. 
+2. In order for the Application to run you will need to get a Bing Maps API Key. Please visit: https://www.bingmapsportal.com/ After creating an account and signing in, click on `my account` and select `my keys`. From here select `create a new key` and ensure the key type is set to `basic`. This will provide you with a free Bing Maps API key valid for 125,000 transactions. 
 
 3. Once you have your key, make a copy of the `.env.example` file found in the react app directory and rename it to `.env`. Plug in your key where required as shown below, do not include the quotation marks:
 * REACT_APP_API_KEY="Your key goes here"
